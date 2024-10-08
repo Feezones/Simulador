@@ -1,0 +1,67 @@
+{
+    "Combinations": {
+        "Faixa1": {
+            "id":1,
+            "Linhas": [1],
+            "MovelGB": "28GB",
+            "MovelValor": 49.90,
+            "BLGB": "350 Megas",
+            "ValorBL": 79.90,
+            "Total": 129.80
+        },
+        "Faixa2": {
+            "id":2,
+            "Linhas": [1,2],
+            "MovelGB": "50GB",
+            "MovelValor": 49.90,
+            "BLGB": "350 Megas",
+            "ValorBL": 79.90,
+            "Total": 129.80
+        },
+        "Faixa3": {
+            "id":3,
+            "Linhas": [1],
+            "MovelGB": "28GB",
+            "MovelValor": 49.90,
+            "BLGB": "500 Megas",
+            "ValorBL": 84.90,
+            "Total": 134.80
+        },
+        "Faixa4": {
+            "id":4,
+            "Linhas": [1,2],
+            "MovelGB": "50GB",
+            "MovelValor": 49.90,
+            "BLGB": "5000 Megas",
+            "ValorBL": 84.90,
+            "Total": 134.80
+        },
+        "Faixa5": {
+            "id":5,
+            "Linhas": [1],
+            "MovelGB": "35GB",
+            "MovelValor": 49.90,
+            "BLGB": "350 Megas",
+            "ValorBL": 79.90,
+            "Total": 139.80
+        },
+        "Faixa6": {
+            "id":6,
+            "Linhas": [1,2,3,4,5],
+            "MovelGB": "200GB",
+            "MovelValor": 159.90,
+            "BLGB": "350 Megas",
+            "ValorBL": 79.90,
+            "Total": 239.8
+        },
+        "Faixa7": {
+            "id":7,
+            "Linhas": [1,2,3,4,5],
+            "MovelGB": "200GB",
+            "MovelValor": 159.90,
+            "BLGB": "350 Megas",
+            "ValorBL": 79.90,
+            "Total": 239.8
+        }
+    }
+}

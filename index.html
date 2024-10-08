@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <a>BaseUR:</a><input type="checkbox"/><br>
+    <a>Portabilidade:</a><input type="checkbox"/><br>
+    <a>Qtd Linhas:</a>
+        <select id="linhas">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select><br>
+    <a>Vlr movel:</a><input id="vlrmovel" type="number" value="0"/><br>
+    <a>Vlr Bl:</a><input id="vlrbl" type="number" value="0"/><br>
+    <button onclick="sumValues()">Calcular</button><br>
+    <a>Valor Final:</a><input id="vfl" type="number" disabled/><br>
+
+    <table>
+        <thead>
+            <tr>
+                <th>plano1</th>
+                <th>plano2</th>
+                <th>plano3</th>
+                <th>plano4</th>
+                <th>plano5</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="faixaNome1"></td>
+                <td id="faixaNome2">s</td>
+                <td id="faixaNome3">a</td>
+                <td id="faixaNome4">f</td>
+                <td id="faixaNome5">f</td>
+            </tr>
+            <tr>
+                <td id="totalFaixa1"></td>
+                <td id="totalFaixa2"></td>
+                <td id="totalFaixa3">a</td>
+                <td id="totalFaixa4">f</td>
+                <td id="totalFaixa5">f</td>
+            </tr>
+           
+        </tbody>
+    </table>
+    
+
+
+    <script src="script.js"></script>
+</body>
+</html>

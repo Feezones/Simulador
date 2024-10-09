@@ -1,67 +1,256 @@
 {
     "Combinations": {
-        "Faixa1": {
-            "id":1,
+        "Faixa0": {
+            "id": 1,
             "Linhas": [1],
-            "MovelGB": "28GB",
-            "MovelValor": 49.90,
-            "BLGB": "350 Megas",
-            "ValorBL": 79.90,
-            "Total": 129.80
+            "InternetMovel": "28GB",
+            "vlr_movel": 49.90,
+            "InternetBandaLarga": "350 Mega",
+            "vlr_bl": 79.90,
+            "vlr_total": 129.80
+        },
+        "Faixa1": {
+            "id": 2,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "50GB",
+            "vlr_movel": 49.90,
+            "InternetBandaLarga": "350 Mega",
+            "vlr_bl": 79.90,
+            "vlr_total": 129.80
         },
         "Faixa2": {
-            "id":2,
-            "Linhas": [1,2],
-            "MovelGB": "50GB",
-            "MovelValor": 49.90,
-            "BLGB": "350 Megas",
-            "ValorBL": 79.90,
-            "Total": 129.80
+            "id": 3,
+            "Linhas": [1],
+            "InternetMovel": "28GB",
+            "vlr_movel": 49.90,
+            "InternetBandaLarga": "500 Mega",
+            "vlr_bl": 84.90,
+            "vlr_total": 134.80
         },
         "Faixa3": {
-            "id":3,
-            "Linhas": [1],
-            "MovelGB": "28GB",
-            "MovelValor": 49.90,
-            "BLGB": "500 Megas",
-            "ValorBL": 84.90,
-            "Total": 134.80
+            "id": 4,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "50GB",
+            "vlr_movel": 49.90,
+            "InternetBandaLarga": "500 Mega",
+            "vlr_bl": 84.90,
+            "vlr_total": 134.80
         },
         "Faixa4": {
-            "id":4,
-            "Linhas": [1,2],
-            "MovelGB": "50GB",
-            "MovelValor": 49.90,
-            "BLGB": "5000 Megas",
-            "ValorBL": 84.90,
-            "Total": 134.80
+            "id": 5,
+            "Linhas": [1],
+            "InternetMovel": "35GB",
+            "vlr_movel": 59.90,
+            "InternetBandaLarga": "350 Mega",
+            "vlr_bl": 79.90,
+            "vlr_total": 139.80
         },
         "Faixa5": {
-            "id":5,
-            "Linhas": [1],
-            "MovelGB": "35GB",
-            "MovelValor": 49.90,
-            "BLGB": "350 Megas",
-            "ValorBL": 79.90,
-            "Total": 139.80
+            "id": 6,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "200GB",
+            "vlr_movel": 159.90,
+            "InternetBandaLarga": "350 Mega",
+            "vlr_bl": 79.90,
+            "vlr_total": 239.80
         },
         "Faixa6": {
-            "id":6,
-            "Linhas": [1,2,3,4,5],
-            "MovelGB": "200GB",
-            "MovelValor": 159.90,
-            "BLGB": "350 Megas",
-            "ValorBL": 79.90,
-            "Total": 239.8
+            "id": 7,
+            "Linhas": [1],
+            "InternetMovel": "35GB",
+            "vlr_movel": 59.90,
+            "InternetBandaLarga": "500 Mega",
+            "vlr_bl": 84.90,
+            "vlr_total": 144.80
         },
         "Faixa7": {
-            "id":7,
-            "Linhas": [1,2,3,4,5],
-            "MovelGB": "200GB",
-            "MovelValor": 159.90,
-            "BLGB": "350 Megas",
-            "ValorBL": 79.90,
-            "Total": 239.8
+            "id": 8,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "200GB",
+            "vlr_movel": 159.90,
+            "InternetBandaLarga": "500 Mega",
+            "vlr_bl": 84.90,
+            "vlr_total": 244.80
+        },
+        "Faixa8": {
+            "id": 9,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "50GB",
+            "vlr_movel": 49.90,
+            "InternetBandaLarga": "750 Mega",
+            "vlr_bl": 129.90,
+            "vlr_total": 179.80
+        },
+        "Faixa9": {
+            "id": 10,
+            "Linhas": [1],
+            "InternetMovel": "28GB",
+            "vlr_movel": 49.90,
+            "InternetBandaLarga": "750 Mega",
+            "vlr_bl": 129.90,
+            "vlr_total": 179.80
+        },
+        "Faixa10": {
+            "id": 11,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "100GB",
+            "vlr_movel": 109.90,
+            "InternetBandaLarga": "350 Mega",
+            "vlr_bl": 79.90,
+            "vlr_total": 189.80
+        },
+        "Faixa11": {
+            "id": 12,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "200GB",
+            "vlr_movel": 159.90,
+            "InternetBandaLarga": "750 Mega",
+            "vlr_bl": 129.90,
+            "vlr_total": 289.80
+        },
+        "Faixa12": {
+            "id": 13,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "300GB",
+            "vlr_movel": 209.90,
+            "InternetBandaLarga": "350 Mega",
+            "vlr_bl": 79.90,
+            "vlr_total": 289.80
+        },
+        "Faixa13": {
+            "id": 14,
+            "Linhas": [1],
+            "InternetMovel": "35GB",
+            "vlr_movel": 59.90,
+            "InternetBandaLarga": "750 Mega",
+            "vlr_bl": 129.90,
+            "vlr_total": 189.80
+        },
+        "Faixa14": {
+            "id": 15,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "100GB",
+            "vlr_movel": 109.90,
+            "InternetBandaLarga": "500 Mega",
+            "vlr_bl": 84.90,
+            "vlr_total": 194.80
+        },
+        "Faixa15": {
+            "id": 16,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "300GB",
+            "vlr_movel": 209.90,
+            "InternetBandaLarga": "500 Mega",
+            "vlr_bl": 84.90,
+            "vlr_total": 294.80
+        },
+        "Faixa16": {
+            "id": 17,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "600GB",
+            "vlr_movel": 309.90,
+            "InternetBandaLarga": "350 Mega",
+            "vlr_bl": 79.90,
+            "vlr_total": 389.80
+        },
+        "Faixa17": {
+            "id": 18,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "100GB",
+            "vlr_movel": 109.90,
+            "InternetBandaLarga": "750 Mega",
+            "vlr_bl": 129.90,
+            "vlr_total": 239.80
+        },
+        "Faixa18": {
+            "id": 19,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "300GB",
+            "vlr_movel": 209.90,
+            "InternetBandaLarga": "750 Mega",
+            "vlr_bl": 129.90,
+            "vlr_total": 339.80
+        },
+        "Faixa19": {
+            "id": 20,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "600GB",
+            "vlr_movel": 309.90,
+            "InternetBandaLarga": "500 Mega",
+            "vlr_bl": 84.90,
+            "vlr_total": 394.80
+        },
+        "Faixa20": {
+            "id": 21,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "600GB",
+            "vlr_movel": 309.90,
+            "InternetBandaLarga": "750 Mega",
+            "vlr_bl": 129.90,
+            "vlr_total": 439.80
+        },
+        "Faixa21": {
+            "id": 22,
+            "Linhas": [1],
+            "InternetMovel": "28GB",
+            "vlr_movel": 49.90,
+            "InternetBandaLarga": "1 Giga",
+            "vlr_bl": 299.90,
+            "vlr_total": 349.80
+        },
+        "Faixa22": {
+            "id": 23,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "50GB",
+            "vlr_movel": 49.90,
+            "InternetBandaLarga": "1 Giga",
+            "vlr_bl": 299.90,
+            "vlr_total": 349.80
+        },
+        "Faixa23": {
+            "id": 24,
+            "Linhas": [1],
+            "InternetMovel": "35GB",
+            "vlr_movel": 59.90,
+            "InternetBandaLarga": "1 Giga",
+            "vlr_bl": 299.90,
+            "vlr_total": 359.80
+        },
+        "Faixa24": {
+            "id": 25,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "200GB",
+            "vlr_movel": 159.90,
+            "InternetBandaLarga": "1 Giga",
+            "vlr_bl": 299.90,
+            "vlr_total": 459.80
+        },
+        "Faixa25": {
+            "id": 26,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "100GB",
+            "vlr_movel": 109.90,
+            "InternetBandaLarga": "1 Giga",
+            "vlr_bl": 299.90,
+            "vlr_total": 409.80
+        },
+        "Faixa26": {
+            "id": 27,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "300GB",
+            "vlr_movel": 209.90,
+            "InternetBandaLarga": "1 Giga",
+            "vlr_bl": 299.90,
+            "vlr_total": 509.80
+        },
+        "Faixa27": {
+            "id": 28,
+            "Linhas": [1,2,3,4,5,6],
+            "InternetMovel": "600GB",
+            "vlr_movel": 309.90,
+            "InternetBandaLarga": "1 Giga",
+            "vlr_bl": 299.90,
+            "vlr_total": 609.80
         }
     }
 }

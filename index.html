@@ -8,9 +8,9 @@
 </head>
 <body>
 
-    <a>BaseUR:</a><input type="checkbox"/><br>
-    <a>Portabilidade:</a><input type="checkbox"/><br>
-    <a>Qtd Linhas:</a>
+    <a>Valor Movel:</a><input id="vlrmovel" type="number" value="0"/><br>
+    <a>Valor Banda Larga:</a><input id="vlrbl" type="number" value="0"/><br>
+    <a>Quantidade de Linhas:</a>
         <select id="linhas">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -19,36 +19,65 @@
         <option value="5">5</option>
         <option value="6">6</option>
       </select><br>
-    <a>Vlr movel:</a><input id="vlrmovel" type="number" value="0"/><br>
-    <a>Vlr Bl:</a><input id="vlrbl" type="number" value="0"/><br>
+    <a>Base UR:</a><input type="checkbox"/><br>
+    <a>Portabilidade:</a><input type="checkbox"/><br>
+
     <button onclick="sumValues()">Calcular</button><br>
     <a>Valor Final:</a><input id="vfl" type="number" disabled/><br>
 
     <table>
         <thead>
             <tr>
-                <th>plano1</th>
-                <th>plano2</th>
-                <th>plano3</th>
-                <th>plano4</th>
-                <th>plano5</th>
+                <th></th>
+                <th>Melhor Opção</th>
+                <th>Foco em + Internet Móvel</th>
+                <th>Foco em + Velocidade</th>
+                <th>Opção Adc.1</th>
+                <th>Opção Adc.2</th>
             </tr>
         </thead>
         <tbody>
             <tr>
+                <td id="nomeMovel" class="columName">InternetMovel</td>
                 <td id="faixaNome1"></td>
-                <td id="faixaNome2">s</td>
-                <td id="faixaNome3">a</td>
-                <td id="faixaNome4">f</td>
-                <td id="faixaNome5">f</td>
+                <td id="faixaNome2"></td>
+                <td id="faixaNome3"></td>
+                <td id="faixaNome4"></td>
+                <td id="faixaNome5"></td>
             </tr>
             <tr>
+                <td id="valorMovel" class="columName">Valor Movel</td>
+                <td id="vlr_movel1"></td>
+                <td id="vlr_movel2"></td>
+                <td id="vlr_movel3"></td>
+                <td id="vlr_movel4"></td>
+                <td id="vlr_movel5"></td>
+            </tr>
+            <tr>
+                <td id="internetBandaLarga" class="columName">InternetBandaLarga</td>
+                <td id="ibl1"></td>
+                <td id="ibl2"></td>
+                <td id="ibl3"></td>
+                <td id="ibl4"></td>
+                <td id="ibl5"></td>
+            </tr>
+            <tr>
+                <td id="valorBl" class="columName">Valor BL</td>
+                <td id="vlrBl1"></td>
+                <td id="vlrBl2"></td>
+                <td id="vlrBl3"></td>
+                <td id="vlrBl4"></td>
+                <td id="vlrBl5"></td>
+            </tr>
+            <tr>
+                <td id="valorTotal" class="columName">Valor Total</td>
                 <td id="totalFaixa1"></td>
                 <td id="totalFaixa2"></td>
-                <td id="totalFaixa3">a</td>
-                <td id="totalFaixa4">f</td>
-                <td id="totalFaixa5">f</td>
+                <td id="totalFaixa3"></td>
+                <td id="totalFaixa4"></td>
+                <td id="totalFaixa5"></td>
             </tr>
+            
         </tbody>
     </table>
 

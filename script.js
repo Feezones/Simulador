@@ -27,10 +27,13 @@ function loadJson() {
 
 function filterByOptions(){
 
+    loadJson()
+    clearHTML()
+
     var BaseUR = document.getElementById("baseUR")
     var Port = document.getElementById("Port")
 
-    var isPortOrUr = BaseUR.checked && Port.checked ? true : false
+    var isPortAndUr = BaseUR.checked && Port.checked ? true : false
 
     var qtdLinhas = parseInt(document.getElementById("linhas").value);
 
@@ -38,7 +41,7 @@ function filterByOptions(){
 
     var filterCombo
 
-    if (isPortOrUr) {
+    if (isPortAndUr) {
         filterCombo = Object.values(Combinations.Combinations).map((x) => {
             switch (x.InternetMovel) {
                 case "28GB":
@@ -69,6 +72,7 @@ function filterByOptions(){
 
     if(qtdLinhas > 1){
         filterCombo = filterCombo.filter((x) => x.Linhas.includes(qtdLinhas))
+        updateValues(filterCombo,qtdLinhas)
     }
 
     filterCombo = filterCombo.sort((a, b) => {
@@ -100,6 +104,55 @@ function filterByOptions(){
 
     showPlan(filterCombo)
 
+}
+
+function updateValues(filterCombo, qtdLinhas){
+    filterCombo = Object.values(Combinations.Combinations).map((x) => {
+        switch (qtdLinhas) {
+            case 2:
+                if(x.InternetMovel == "50GB")
+                    x.vlr_total = x.vlr_total + 50.00
+
+                if(x.InternetMovel == "100GB")
+                    x.vlr_total = x.vlr_total + 50.00
+                break;
+            case 3:
+                if(x.InternetMovel == "100GB")
+                    x.vlr_total = x.vlr_total + 100.00
+                break;
+            case 4:
+                if(x.InternetMovel == "200GB")
+                    x.vlr_total = x.vlr_total + 50.00
+
+                if(x.InternetMovel == "300GB")
+                    x.vlr_total = x.vlr_total + 50.00
+
+                if(x.InternetMovel == "600GB")
+                    x.vlr_total = x.vlr_total + 50.00
+                break;
+            case 5:
+                if(x.InternetMovel == "200GB")
+                    x.vlr_total = x.vlr_total + 100.00
+
+                if(x.InternetMovel == "300GB")
+                    x.vlr_total = x.vlr_total + 100.00
+
+                if(x.InternetMovel == "600GB")
+                    x.vlr_total = x.vlr_total + 100.00
+                break;
+            case 6:
+                if(x.InternetMovel == "200GB")
+                    x.vlr_total = x.vlr_total + 150.00
+
+                if(x.InternetMovel == "300GB")
+                    x.vlr_total = x.vlr_total + 150.00
+                break;
+            default:
+                // xxxx
+                break;
+        }
+        return x;
+    });
 }
 
 
@@ -145,4 +198,36 @@ function showPlan(filterCombo) {
     document.getElementById("ibl5").innerText = filterCombo[4].InternetBandaLarga;
     document.getElementById("vlrBl5").innerText = filterCombo[4].vlr_bl;
     document.getElementById("totalFaixa5").innerText = filterCombo[4].vlr_total
+}
+
+function clearHTML(){
+    document.getElementById("faixaNome1").innerText = "";
+    document.getElementById("vlr_movel1").innerText = "";
+    document.getElementById("ibl1").innerText = "";
+    document.getElementById("vlrBl1").innerText = "";
+    document.getElementById("totalFaixa1").innerText = "";
+
+    document.getElementById("faixaNome2").innerText = "";
+    document.getElementById("vlr_movel2").innerText = "";
+    document.getElementById("ibl2").innerText = "";
+    document.getElementById("vlrBl2").innerText = "";
+    document.getElementById("totalFaixa2").innerText = "";
+
+    document.getElementById("faixaNome3").innerText = "";
+    document.getElementById("vlr_movel3").innerText = "";
+    document.getElementById("ibl3").innerText = "";
+    document.getElementById("vlrBl3").innerText = "";
+    document.getElementById("totalFaixa3").innerText = "";
+
+    document.getElementById("faixaNome4").innerText = "";
+    document.getElementById("vlr_movel4").innerText = "";
+    document.getElementById("ibl4").innerText = "";
+    document.getElementById("vlrBl4").innerText = "";
+    document.getElementById("totalFaixa4").innerText = "";
+
+    document.getElementById("faixaNome5").innerText = "";
+    document.getElementById("vlr_movel5").innerText = "";
+    document.getElementById("ibl5").innerText = "";
+    document.getElementById("vlrBl5").innerText = "";
+    document.getElementById("totalFaixa5").innerText = "";
 }

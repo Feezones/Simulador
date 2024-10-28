@@ -43,32 +43,79 @@ function filterByOptions(){
 
   combinacoes = filtrarPorLinhas(qtdLinhas)
 
-  buildCombo(combinacoes, totalValue)
+  buildCombo(combinacoes, totalValue,isPortAndUr)
   
 }
 
-function buildCombo(combinacoes, valor) {
-  const op1 = opcao1(combinacoes, valor);
-  //const op2 = opcao2(planos, valor, op1);
+function buildCombo(combinacoes, valor, isPortAndUr) {
+  const op1 = opcao1(combinacoes, valor, isPortAndUr);
+  const op2 = opcao2(combinacoes, valor, isPortAndUr, op1);
   
   return { op1 };
 }
 
-function opcao1(combinacoes, valor) {
+function opcao1(combinacoes, valor, isPortAndUr) {
   let menorDiferenca = Infinity;
-let melhorCombinacao = null;
+  let melhorCombinacao = null;
 
-  combinacoes.forEach(combinacao => {
-    const diferencaAtual = Math.abs(combinacao.vlr_total - valor); // Calcula a diferença absoluta
+  if(!isPortAndUr){
+    combinacoes.forEach(combinacao => {
+      const diferencaAtual = Math.abs(combinacao.vlr_total - valor); // Calcula a diferença absoluta
+  
+      // Verifica se a diferença atual é menor que a menor diferença registrada
+      if (diferencaAtual < menorDiferenca) {
+          menorDiferenca = diferencaAtual; // Atualiza a menor diferença
+          melhorCombinacao = combinacao; // Atualiza a melhor combinação
+      }
+    });
+  }
 
-    // Verifica se a diferença atual é menor que a menor diferença registrada
-    if (diferencaAtual < menorDiferenca) {
-        menorDiferenca = diferencaAtual; // Atualiza a menor diferença
-        melhorCombinacao = combinacao; // Atualiza a melhor combinação
-    }
-});
+  if(isPortAndUr){
+    combinacoes.forEach(combinacao => {
+      const diferencaAtual = Math.abs(combinacao.vlr_total_portin - valor); // Calcula a diferença absoluta
+  
+      // Verifica se a diferença atual é menor que a menor diferença registrada
+      if (diferencaAtual < menorDiferenca) {
+          menorDiferenca = diferencaAtual; // Atualiza a menor diferença
+          melhorCombinacao = combinacao; // Atualiza a melhor combinação
+      }
+    });
+  }
+
   return melhorCombinacao;
 }
+
+function opcao2(combinacoes, valor, isPortAndUr, op1) {
+  let menorDiferenca = Infinity;
+  let melhorCombinacao = null;
+
+  // Converte o valor de internetMovel de op1 para número
+  const internetMovelOp1 = parseInt(op1.internetMovel.replace(' GB', ''));
+
+  // Itera sobre as combinações
+  combinacoes.forEach(combinacao => {
+    let diferencaAtual;
+    
+    // Verifica qual campo de valor usar dependendo do isPortAndUr
+    if (isPortAndUr) {
+      diferencaAtual = Math.abs(combinacao.vlr_total_portin - valor); // Para portabilidade
+    } else {
+      diferencaAtual = Math.abs(combinacao.vlr_total - valor); // Normal
+    }
+
+    // Converte o valor de internetMovel da combinação atual para número
+    const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
+
+    // Verifica se a diferença é menor e o internetMovel é maior que o da op1
+    if (diferencaAtual < menorDiferenca && internetMovelAtual > internetMovelOp1) {
+      menorDiferenca = diferencaAtual; // Atualiza a menor diferença
+      melhorCombinacao = combinacao;   // Atualiza a melhor combinação
+    }
+  });
+
+  return melhorCombinacao;
+}
+
 
 function filtrarPorLinhas(numLinhas) {
   const resultado = [];

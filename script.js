@@ -75,35 +75,62 @@ function filterByOptions(){
         updateValues(filterCombo,qtdLinhas)
     }
 
-    filterCombo = filterCombo.sort((a, b) => {
-        const diffA = Math.abs(a.vlr_total - totalValue); // Diferença absoluta para o item A
-        const diffB = Math.abs(b.vlr_total - totalValue); // Diferença absoluta para o item B
-        return diffA - diffB; // Ordena pelo mais próximo (menor diferença)
-    });
-
-    // Filtrar as combinações com vlr_total menor que totalValue
-    const menores = filterCombo
-    .filter((x) => x.vlr_total < totalValue)
-    .sort((a, b) => totalValue - a.vlr_total); // Ordena do maior para o menor (mais próximo de totalValue)
-
-    // Filtrar as combinações com vlr_total maior que totalValue
-    const maiores = filterCombo
-    .filter((x) => x.vlr_total > totalValue)
-    .sort((a, b) => a.vlr_total - totalValue); // Ordena do menor para o maior (mais próximo de totalValue)
-
-    // Combina os resultados, pegando 2 dos menores e 3 dos maiores
-    filterCombo = [
-    ...menores.slice(0, 2), // Pega os 2 primeiros menores
-    ...maiores.slice(0, 3)  // Pega os 3 primeiros maiores
-    ];
-
-    // Ordena o array resultante por vlr_total em ordem crescente
-    filterCombo.sort((a, b) => a.vlr_total - b.vlr_total);
-
-    // filterCombo agora tem exatamente 5 combinações, com as 2 primeiras < totalValue e as 3 seguintes > totalValue, ordenadas por vlr_total
-
+    var result = buildCombo(filterCombo,totalValue)
+    
     showPlan(filterCombo)
 
+}
+
+function buildCombo(planos, valor) {
+    const op1 = opcao1(planos, valor);
+    const op2 = opcao2(planos, valor, op1);
+    
+    return { op1, op2 };
+}
+
+function opcao1(planos, valor) {
+    let closestFaixa1 = null;
+    let smallestDifference = Infinity;
+
+    for (const faixa in planos) {
+        const faixaInfo = planos[faixa];
+        const difference = Math.abs(faixaInfo.vlr_total - valor);
+
+        if (difference < smallestDifference) {
+            smallestDifference = difference;
+            closestFaixa1 = faixaInfo;
+        }
+    }
+
+    return closestFaixa1;
+}
+
+function opcao2(planos, valor, currentFaixa) {
+    let closestFaixa = null;
+    let smallestDifference = Infinity;
+
+    const currentInternetMovelValue = parseInt(currentFaixa.InternetMovel.replace("GB", ""));
+    const currentInternetBandaLargaValue = parseInt(currentFaixa.InternetBandaLarga.split(' ')[0]); // Convertendo a unidade de internet banda larga para número
+
+    for (const faixa in planos) {
+        const faixaInfo = planos[faixa];
+        const difference = Math.abs(faixaInfo.vlr_total - valor);
+        const internetMovelValue = parseInt(faixaInfo.InternetMovel.replace("GB", ""));
+        const internetBandaLargaValue = parseInt(faixaInfo.InternetBandaLarga.split(' ')[0]); // Convertendo a unidade de internet banda larga para número
+
+        // Verifica as condições:
+        if (
+            internetMovelValue > currentInternetMovelValue &&
+            internetBandaLargaValue < currentInternetBandaLargaValue &&
+            faixaInfo.vlr_total < valor && // Nova condição: valor total deve ser menor que o valor inserido
+            (difference < smallestDifference || closestFaixa === null)
+        ) {
+            smallestDifference = difference;
+            closestFaixa = faixaInfo;
+        }
+    }
+
+    return closestFaixa;
 }
 
 function updateValues(filterCombo, qtdLinhas){

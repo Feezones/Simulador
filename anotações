@@ -10,5 +10,19 @@ metodo filtro {
 }
 
 
+opção4 
+
+internetmovel = opcao2
+
+internetbandalarga > opcao2
+
+
+
+opção 5 
+
+internetmovel = opcao3
+
+internetbandalarga < opcao3
+
 
 

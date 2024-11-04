@@ -83,10 +83,10 @@
             "vlr_bl": 134.9,
             "internetMovel": "50 GB",
             "linhas": 2,
-            "vlr_movel": 59.9,
-            "vlr_movel_port": 59.9,
-            "vlr_total": 194.8,
-            "vlr_total_portin": 194.8
+            "vlr_movel": 64.9,
+            "vlr_movel_port": 64.9,
+            "vlr_total": 199.8,
+            "vlr_total_portin": 199.8
         },
         "faixa8": {
             "id": 9,
@@ -94,10 +94,10 @@
             "vlr_bl": 134.9,
             "internetMovel": "35 GB",
             "linhas": 1,
-            "vlr_movel": 64.9,
-            "vlr_movel_port": 64.9,
-            "vlr_total": 199.8,
-            "vlr_total_portin": 199.8
+            "vlr_movel": 59.9,
+            "vlr_movel_port": 59.9,
+            "vlr_total": 194.8,
+            "vlr_total_portin": 194.8
         },
         "faixa9": {
             "id": 10,

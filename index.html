@@ -11,75 +11,71 @@
     <a>Valor Movel:</a><input id="vlrmovel" type="number" value="0"/><br>
     <a>Valor Banda Larga:</a><input id="vlrbl" type="number" value="0"/><br>
     <a>Quantidade de Linhas:</a>
-        <select id="linhas">
+    <select id="linhas">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
         <option value="6">6</option>
-      </select><br>
+    </select><br>
     <a>Base UR:</a><input type="checkbox" id="baseUR"/><br>
     <a>Portabilidade:</a><input type="checkbox" id="Port"/><br>
 
     <button onclick="filterByOptions()">Calcular</button><br>
     <a>Valor Final:</a><input id="vfl" type="number" disabled/><br>
 
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>Melhor Opção</th>
-                <th>Foco em + Internet Móvel</th>
-                <th>Foco em + Velocidade</th>
-                <th>Opção Adc.1</th>
-                <th>Opção Adc.2</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td id="nomeMovel" class="columName">InternetMovel</td>
-                <td id="faixaNome1"></td>
-                <td id="faixaNome2"></td>
-                <td id="faixaNome3"></td>
-                <td id="faixaNome4"></td>
-                <td id="faixaNome5"></td>
-            </tr>
-            <tr>
-                <td id="valorMovel" class="columName">Valor Movel</td>
-                <td id="vlr_movel1"></td>
-                <td id="vlr_movel2"></td>
-                <td id="vlr_movel3"></td>
-                <td id="vlr_movel4"></td>
-                <td id="vlr_movel5"></td>
-            </tr>
-            <tr>
-                <td id="internetBandaLarga" class="columName">InternetBandaLarga</td>
-                <td id="ibl1"></td>
-                <td id="ibl2"></td>
-                <td id="ibl3"></td>
-                <td id="ibl4"></td>
-                <td id="ibl5"></td>
-            </tr>
-            <tr>
-                <td id="valorBl" class="columName">Valor BL</td>
-                <td id="vlrBl1"></td>
-                <td id="vlrBl2"></td>
-                <td id="vlrBl3"></td>
-                <td id="vlrBl4"></td>
-                <td id="vlrBl5"></td>
-            </tr>
-            <tr>
-                <td id="valorTotal" class="columName">Valor Total</td>
-                <td id="totalFaixa1"></td>
-                <td id="totalFaixa2"></td>
-                <td id="totalFaixa3"></td>
-                <td id="totalFaixa4"></td>
-                <td id="totalFaixa5"></td>
-            </tr>
-            
-        </tbody>
-    </table>
+    <div class="card-container">
+        <!-- Card Melhor Opção -->
+        <div class="card">
+            <h3>Melhor Opção</h3>
+            <p><strong>Internet Móvel:</strong> <span id="faixaNome1"></span></p>
+            <p><strong>Valor Móvel:</strong> <span id="vlr_movel1"></span></p>
+            <p><strong>Internet Banda Larga:</strong> <span id="ibl1"></span></p>
+            <p><strong>Valor BL:</strong> <span id="vlrBl1"></span></p>
+            <p><strong>Valor Total:</strong> <span id="totalFaixa1"></span></p>
+        </div>
+
+        <!-- Card Foco em + Internet Móvel -->
+        <div class="card">
+            <h3>Foco em + Internet Móvel</h3>
+            <p><strong>Internet Móvel:</strong> <span id="faixaNome2"></span></p>
+            <p><strong>Valor Móvel:</strong> <span id="vlr_movel2"></span></p>
+            <p><strong>Internet Banda Larga:</strong> <span id="ibl2"></span></p>
+            <p><strong>Valor BL:</strong> <span id="vlrBl2"></span></p>
+            <p><strong>Valor Total:</strong> <span id="totalFaixa2"></span></p>
+        </div>
+
+        <!-- Card Foco em + Velocidade -->
+        <div class="card">
+            <h3>Foco em + Velocidade</h3>
+            <p><strong>Internet Móvel:</strong> <span id="faixaNome3"></span></p>
+            <p><strong>Valor Móvel:</strong> <span id="vlr_movel3"></span></p>
+            <p><strong>Internet Banda Larga:</strong> <span id="ibl3"></span></p>
+            <p><strong>Valor BL:</strong> <span id="vlrBl3"></span></p>
+            <p><strong>Valor Total:</strong> <span id="totalFaixa3"></span></p>
+        </div>
+
+        <!-- Card Opção Adc.1 -->
+        <div class="card">
+            <h3>Opção Adc.1</h3>
+            <p><strong>Internet Móvel:</strong> <span id="faixaNome4"></span></p>
+            <p><strong>Valor Móvel:</strong> <span id="vlr_movel4"></span></p>
+            <p><strong>Internet Banda Larga:</strong> <span id="ibl4"></span></p>
+            <p><strong>Valor BL:</strong> <span id="vlrBl4"></span></p>
+            <p><strong>Valor Total:</strong> <span id="totalFaixa4"></span></p>
+        </div>
+
+        <!-- Card Opção Adc.2 -->
+        <div class="card">
+            <h3>Opção Adc.2</h3>
+            <p><strong>Internet Móvel:</strong> <span id="faixaNome5"></span></p>
+            <p><strong>Valor Móvel:</strong> <span id="vlr_movel5"></span></p>
+            <p><strong>Internet Banda Larga:</strong> <span id="ibl5"></span></p>
+            <p><strong>Valor BL:</strong> <span id="vlrBl5"></span></p>
+            <p><strong>Valor Total:</strong> <span id="totalFaixa5"></span></p>
+        </div>
+    </div>
 
     <script src="script2.js"></script>
 </body>

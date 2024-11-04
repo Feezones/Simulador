@@ -57,7 +57,7 @@
         },
         "faixa5": {
             "id": 6,
-            "internetBandaLarga": "750 Megas",
+            "internetBandaLarga": "500 Megas",
             "vlr_bl": 89.9,
             "internetMovel": "35 GB",
             "linhas": 1,

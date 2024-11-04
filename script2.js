@@ -210,7 +210,7 @@ function opcao5(combinacoes, valor, op1, op2, op3, op4) {
    const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
 
     // Verifica se a diferença é menor e internetBandaLarga é maior que a de op1
-    if (diferencaAtual < menorDiferenca && bandaLargaAtual < bandaLargaOp3  && internetMovelAtual == internetMovelop3 && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id && combinacao.id != op4.id) {
+    if (diferencaAtual < menorDiferenca && bandaLargaAtual == bandaLargaOp3  && internetMovelAtual < internetMovelop3 && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id && combinacao.id != op4.id) {
       menorDiferenca = diferencaAtual; // Atualiza a menor diferença
       melhorCombinacao = combinacao;   // Atualiza a melhor combinação
     }

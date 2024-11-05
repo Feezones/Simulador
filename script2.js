@@ -2,30 +2,30 @@ loadJson()
 var combinacoes;
 
 function loadJson() {
-    // Usando fetch para carregar o arquivo JSON
-    fetch('newjson.json')  // Especifique o caminho do arquivo JSON
-        .then(response => {
-            // Verificar se a resposta foi bem-sucedida
-            if (!response.ok) {
-                throw new Error('Erro ao carregar o arquivo JSON.');
-            }
+  // Usando fetch para carregar o arquivo JSON
+  fetch('newjson.json')  // Especifique o caminho do arquivo JSON
+    .then(response => {
+      // Verificar se a resposta foi bem-sucedida
+      if (!response.ok) {
+        throw new Error('Erro ao carregar o arquivo JSON.');
+      }
 
-            return response.json(); // Converter a resposta em JSON
-        })
-        .then(data => {
-            // Manipular os dados do JSON
-            combinacoes = data
-            //alert(data)
-        })
-        .catch(error => {
-            // Manipular erros
-            console.error('Erro:', error);
-        });
+      return response.json(); // Converter a resposta em JSON
+    })
+    .then(data => {
+      // Manipular os dados do JSON
+      combinacoes = data
+      //alert(data)
+    })
+    .catch(error => {
+      // Manipular erros
+      console.error('Erro:', error);
+    });
 }
 
 
 
-function filterByOptions(){
+function filterByOptions() {
 
   loadJson()
   clearHTML()
@@ -43,18 +43,24 @@ function filterByOptions(){
 
   combinacoes = filtrarPorLinhas(qtdLinhas)
 
-  buildCombo(combinacoes, totalValue,isPortAndUr)
-  
+  buildCombo(combinacoes, totalValue, isPortAndUr,qtdLinhas)
+
 }
 
-function buildCombo(combinacoes, valor, isPortAndUr) {
-  const op1 = opcao1(combinacoes, valor);
-  const op2 = opcao2(combinacoes, valor, op1);
-  const op3 = opcao3(combinacoes, valor, op1, op2);
-  const op4 = opcao4(combinacoes, valor, op1, op2, op3);
-  const op5 = opcao5(combinacoes, valor, op1, op2, op3, op4);
+function buildCombo(combinacoes, valor, isPortAndUr, qtdLinhas) {
+  var op1 = opcao1(combinacoes, valor);
+  var op2 = opcao2(combinacoes, valor, op1);
+  var op3 = opcao3(combinacoes, valor, op1, op2);
+  var op4 = opcao4(combinacoes, valor, op1, op2, op3);
+  var op5 = opcao5(combinacoes, valor, op1, op2, op3, op4);
+
+  op1 = addValorTotal(op1,qtdLinhas)
+  op2 = addValorTotal(op2,qtdLinhas)
+  op3 = addValorTotal(op3,qtdLinhas)
+  op4 = addValorTotal(op4,qtdLinhas)
+  op5 = addValorTotal(op5,qtdLinhas)
   
-  showPlan(isPortAndUr,op1,op2,op3,op4,op5)
+  showPlan(isPortAndUr, op1, op2, op3, op4, op5)
 }
 
 function opcao1(combinacoes, valor) {
@@ -62,15 +68,15 @@ function opcao1(combinacoes, valor) {
   let melhorCombinacao = null;
 
 
-    combinacoes.forEach(combinacao => {
-      const diferencaAtual = Math.abs(combinacao.vlr_total_portin - valor); // Calcula a diferença absoluta
-  
-      // Verifica se a diferença atual é menor que a menor diferença registrada
-      if (diferencaAtual < menorDiferenca) {
-          menorDiferenca = diferencaAtual; // Atualiza a menor diferença
-          melhorCombinacao = combinacao; // Atualiza a melhor combinação
-      }
-    });
+  combinacoes.forEach(combinacao => {
+    const diferencaAtual = Math.abs(combinacao.vlr_total_portin - valor); // Calcula a diferença absoluta
+
+    // Verifica se a diferença atual é menor que a menor diferença registrada
+    if (diferencaAtual < menorDiferenca) {
+      menorDiferenca = diferencaAtual; // Atualiza a menor diferença
+      melhorCombinacao = combinacao; // Atualiza a melhor combinação
+    }
+  });
   return melhorCombinacao;
 }
 
@@ -84,7 +90,7 @@ function opcao2(combinacoes, valor, op1) {
   // Itera sobre as combinações
   combinacoes.forEach(combinacao => {
     let diferencaAtual;
-    
+
     // Verifica qual campo de valor usar dependendo do isPortAndUr
     diferencaAtual = Math.abs(combinacao.vlr_total - valor);
 
@@ -120,7 +126,7 @@ function opcao3(combinacoes, valor, op1, op2) {
   const bandaLargaOp1 = converterInternetBandaLarga(op2.internetBandaLarga);
 
   // Converte o valor de internetMovel da combinação atual para número
-   //const internetMovelop1 = parseInt(op1.internetMovel.replace(' GB', ''));
+  //const internetMovelop1 = parseInt(op1.internetMovel.replace(' GB', ''));
 
   // Itera sobre as combinações
   combinacoes.forEach(combinacao => {
@@ -133,10 +139,10 @@ function opcao3(combinacoes, valor, op1, op2) {
     const bandaLargaAtual = converterInternetBandaLarga(combinacao.internetBandaLarga);
 
     // Converte o valor de internetMovel da combinação atual para número
-   const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
+    const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
 
     // Verifica se a diferença é menor e internetBandaLarga é maior que a de op1
-    if (diferencaAtual < menorDiferenca && bandaLargaAtual > bandaLargaOp1 && combinacao.id != op1.id && combinacao.id != op2.id ) {
+    if (diferencaAtual < menorDiferenca && bandaLargaAtual > bandaLargaOp1 && combinacao.id != op1.id && combinacao.id != op2.id) {
       menorDiferenca = diferencaAtual; // Atualiza a menor diferença
       melhorCombinacao = combinacao;   // Atualiza a melhor combinação
     }
@@ -155,7 +161,7 @@ function opcao4(combinacoes, valor, op1, op2, op3) {
   // Itera sobre as combinações
   combinacoes.forEach(combinacao => {
     let diferencaAtual;
-    
+
     // Verifica qual campo de valor usar dependendo do isPortAndUr
     diferencaAtual = Math.abs(combinacao.vlr_total - valor);
 
@@ -173,7 +179,7 @@ function opcao4(combinacoes, valor, op1, op2, op3) {
 }
 
 function opcao5(combinacoes, valor, op1, op2, op3, op4) {
-  if(op4 == null)
+  if (op4 == null)
     return null;
 
   let menorDiferenca = Infinity;
@@ -207,10 +213,10 @@ function opcao5(combinacoes, valor, op1, op2, op3, op4) {
     const bandaLargaAtual = converterInternetBandaLarga(combinacao.internetBandaLarga);
 
     // Converte o valor de internetMovel da combinação atual para número
-   const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
+    const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
 
     // Verifica se a diferença é menor e internetBandaLarga é maior que a de op1
-    if (diferencaAtual < menorDiferenca && bandaLargaAtual == bandaLargaOp3  && internetMovelAtual > internetMovelop3 && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id && combinacao.id != op4.id) {
+    if (diferencaAtual < menorDiferenca && bandaLargaAtual == bandaLargaOp3 && internetMovelAtual > internetMovelop3 && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id && combinacao.id != op4.id) {
       menorDiferenca = diferencaAtual; // Atualiza a menor diferença
       melhorCombinacao = combinacao;   // Atualiza a melhor combinação
     }
@@ -230,17 +236,110 @@ function filtrarPorLinhas(numLinhas) {
 
     if (numLinhas === 2 && x.linhas >= 2) {
       resultado.push(x);
-    }else 
-    if (numLinhas === 3 && x.linhas >= 3) {
-      resultado.push(x);
-    }else 
-    if (numLinhas >3 && x.linhas >= 3) {
-      resultado.push(x);
-    }
+    } else
+      if (numLinhas === 3 && x.linhas >= 3) {
+        resultado.push(x);
+      } else
+        if (numLinhas > 3 && x.linhas >= 3) {
+          resultado.push(x);
+        }
   });
 
   return resultado;
 }
+
+function addValorTotal(opcao, numLinhas) {
+
+    if(numLinhas == 1){
+      return opcao;
+    }
+
+    if (numLinhas == 2 && (opcao.internetMovel == "50 GB" || opcao.internetMovel == "100 GB")) {
+      opcao.vlr_total = opcao.vlr_total + 50,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
+      return opcao;
+    }
+
+    if (numLinhas == 3 && opcao.internetMovel == "100 GB") {
+      opcao.vlr_total = opcao.vlr_total + 100,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
+      return opcao;
+    }
+
+    if (numLinhas == 4 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
+      opcao.vlr_total = opcao.vlr_total + 50,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
+      return opcao;
+    }
+
+    if (numLinhas == 5 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
+      opcao.vlr_total = opcao.vlr_total + 100,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
+      return opcao;
+    }
+
+    if (numLinhas == 5 && opcao.internetMovel == "600 GB") {
+      opcao.vlr_total = opcao.vlr_total + 50,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
+      return opcao;
+    }
+
+    if (numLinhas == 6 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
+      opcao.vlr_total = opcao.vlr_total + 150,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 150
+      return opcao;
+    }
+
+    if (numLinhas == 6 && opcao.internetMovel == "600 GB") {
+      opcao.vlr_total = opcao.vlr_total + 100,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
+      return opcao;
+    }
+
+    return opcao;
+}
+/*
+function addValorTotal(opcao, numLinhas) {
+  opcao.forEach(x => {
+    if (numLinhas == 2 && (x.internetMovel == "50 GB" || x.internetMovel == "100 GB")) {
+      x.vlr_total = x.vlr_total + 50,
+        x.vlr_total_portin = x.vlr_total_portin + 50
+    }
+
+    if (numLinhas == 3 && x.internetMovel == "100 GB") {
+      x.vlr_total = x.vlr_total + 100,
+        x.vlr_total_portin = x.vlr_total_portin + 100
+    }
+
+    if (numLinhas == 4 && (x.internetMovel == "300 GB" || x.internetMovel == "200 GB")) {
+      x.vlr_total = x.vlr_total + 50,
+        x.vlr_total_portin = x.vlr_total_portin + 50
+    }
+
+    if (numLinhas == 5 && (x.internetMovel == "300 GB" || x.internetMovel == "200 GB")) {
+      x.vlr_total = x.vlr_total + 100,
+        x.vlr_total_portin = x.vlr_total_portin + 100
+    }
+
+    if (numLinhas == 5 && x.internetMovel == "600 GB") {
+      x.vlr_total = x.vlr_total + 50,
+        x.vlr_total_portin = x.vlr_total_portin + 50
+    }
+
+    if (numLinhas == 6 && (x.internetMovel == "300 GB" || x.internetMovel == "200 GB")) {
+      x.vlr_total = x.vlr_total + 150,
+        x.vlr_total_portin = x.vlr_total_portin + 150
+    }
+
+    if (numLinhas == 6 && x.internetMovel == "600 GB") {
+      x.vlr_total = x.vlr_total + 100,
+        x.vlr_total_portin = x.vlr_total_portin + 100
+    }
+  })
+
+  return resultado;
+}
+  */
 
 
 function sumValues() {
@@ -255,7 +354,7 @@ function sumValues() {
 
 
 
-function showPlan(isPortAndUr,op1,op2,op3,op4,op5) {
+function showPlan(isPortAndUr, op1, op2, op3, op4, op5) {
 
   document.getElementById("faixaNome1").innerText = op1.internetMovel;
   document.getElementById("vlr_movel1").innerText = op1.vlr_movel;
@@ -275,15 +374,15 @@ function showPlan(isPortAndUr,op1,op2,op3,op4,op5) {
   document.getElementById("vlrBl3").innerText = op3.vlr_bl;
   document.getElementById("totalFaixa3").innerText = !isPortAndUr ? op3.vlr_total : op3.vlr_total_portin
 
-  if(op4 != null){
+  if (op4 != null) {
     document.getElementById("faixaNome4").innerText = op4.internetMovel;
     document.getElementById("vlr_movel4").innerText = op4.vlr_movel;
     document.getElementById("ibl4").innerText = op4.internetBandaLarga;
     document.getElementById("vlrBl4").innerText = op4.vlr_bl;
     document.getElementById("totalFaixa4").innerText = !isPortAndUr ? op4.vlr_total : op4.vlr_total_portin
   }
-  
-  if(op5 != null){
+
+  if (op5 != null) {
     document.getElementById("faixaNome5").innerText = op5.internetMovel;
     document.getElementById("vlr_movel5").innerText = op5.vlr_movel;
     document.getElementById("ibl5").innerText = op5.internetBandaLarga;
@@ -294,7 +393,7 @@ function showPlan(isPortAndUr,op1,op2,op3,op4,op5) {
 
 
 
-function clearHTML(){
+function clearHTML() {
   document.getElementById("faixaNome1").innerText = "";
   document.getElementById("vlr_movel1").innerText = "";
   document.getElementById("ibl1").innerText = "";

@@ -240,7 +240,7 @@ function filtrarPorLinhas(numLinhas) {
       if (numLinhas === 3 && x.linhas >= 3) {
         resultado.push(x);
       } else
-        if (numLinhas > 3 && x.linhas >= 3) {
+        if (numLinhas > 3 && x.linhas > 3) {
           resultado.push(x);
         }
   });

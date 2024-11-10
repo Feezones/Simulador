@@ -69,7 +69,7 @@ function opcao1(combinacoes, valor) {
 
 
   combinacoes.forEach(combinacao => {
-    const diferencaAtual = Math.abs(combinacao.vlr_total_portin - valor); // Calcula a diferença absoluta
+    const diferencaAtual = Math.abs(combinacao.vlr_total - valor); // Calcula a diferença absoluta
 
     // Verifica se a diferença atual é menor que a menor diferença registrada
     if (diferencaAtual < menorDiferenca) {

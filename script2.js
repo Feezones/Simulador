@@ -426,3 +426,19 @@ function clearHTML() {
   document.getElementById("vlrBl5").innerText = "";
   document.getElementById("totalFaixa5").innerText = "";
 }
+
+function toggleTheme() {
+  const body = document.body;
+  const button = document.getElementById('themeToggle');
+
+  body.classList.toggle('dark-mode');
+  document.querySelectorAll('.card').forEach(card => card.classList.toggle('dark-mode'));
+  document.querySelectorAll('button').forEach(btn => btn.classList.toggle('dark-mode'));
+
+  // Alterar o ícone do botão com base no tema
+  if (body.classList.contains('dark-mode')) {
+      button.textContent = '🌜';
+  } else {
+      button.textContent = '🌞';
+  }
+}

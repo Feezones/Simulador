@@ -1,3 +1,37 @@
+#themeToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #e60000;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1000;
+}
+
+/* Tema escuro */
+body.dark-mode {
+    background-color: #222222;
+    color: #e0e0e0;
+}
+
+.card.dark-mode {
+    background-color: #ffffff;
+    border-color: #ff0000;
+}
+
+button.dark-mode {
+    background-color: #333;
+    color: white;
+}
+
+button.dark-mode:hover {
+    background-color: #444;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #ffffff; /* Fundo branco, comum em designs da Claro */

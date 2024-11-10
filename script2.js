@@ -45,6 +45,8 @@ function filterByOptions() {
 
   buildCombo(combinacoes, totalValue, isPortAndUr,qtdLinhas)
 
+  // Exibir os cards
+  document.querySelector('.card-container').classList.remove('hidden');
 }
 
 function buildCombo(combinacoes, valor, isPortAndUr, qtdLinhas) {

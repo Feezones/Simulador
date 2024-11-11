@@ -189,7 +189,7 @@ tr:hover {
     position: fixed;
     top: 20px;
     left: 20px;
-    background-color: #252525;
+    background-color: #e60000;
     color: white;
     border: none;
     padding: 10px;
@@ -237,7 +237,7 @@ tr:hover {
 }
 
 .sidebar button {
-    background-color: #000000;
+    background-color: #e60000;
     color: white;
     font-weight: bold;
 }

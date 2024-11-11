@@ -23,8 +23,6 @@ function loadJson() {
     });
 }
 
-
-
 function filterByOptions() {
 
   loadJson()
@@ -43,10 +41,12 @@ function filterByOptions() {
 
   combinacoes = filtrarPorLinhas(qtdLinhas)
 
-  buildCombo(combinacoes, totalValue, isPortAndUr,qtdLinhas)
-
   // Exibir os cards
-  document.querySelector('.card-container').classList.remove('hidden');
+  //document.querySelector('.card-container').classList.remove('hidden');
+
+  buildCombo(combinacoes, totalValue, isPortAndUr, qtdLinhas)
+
+
 }
 
 function buildCombo(combinacoes, valor, isPortAndUr, qtdLinhas) {
@@ -56,12 +56,12 @@ function buildCombo(combinacoes, valor, isPortAndUr, qtdLinhas) {
   var op4 = opcao4(combinacoes, valor, op1, op2, op3);
   var op5 = opcao5(combinacoes, valor, op1, op2, op3, op4);
 
-  op1 = addValorTotal(op1,qtdLinhas)
-  op2 = addValorTotal(op2,qtdLinhas)
-  op3 = addValorTotal(op3,qtdLinhas)
-  op4 = addValorTotal(op4,qtdLinhas)
-  op5 = addValorTotal(op5,qtdLinhas)
-  
+  op1 = addValorTotal(op1, qtdLinhas)
+  op2 = addValorTotal(op2, qtdLinhas)
+  op3 = addValorTotal(op3, qtdLinhas)
+  op4 = addValorTotal(op4, qtdLinhas)
+  op5 = addValorTotal(op5, qtdLinhas)
+
   showPlan(isPortAndUr, op1, op2, op3, op4, op5)
 }
 
@@ -227,7 +227,6 @@ function opcao5(combinacoes, valor, op1, op2, op3, op4) {
   return melhorCombinacao;
 }
 
-
 function filtrarPorLinhas(numLinhas) {
   const resultado = [];
 
@@ -252,97 +251,54 @@ function filtrarPorLinhas(numLinhas) {
 
 function addValorTotal(opcao, numLinhas) {
 
-    if(numLinhas == 1){
-      return opcao;
-    }
-
-    if (numLinhas == 2 && (opcao.internetMovel == "50 GB" || opcao.internetMovel == "100 GB")) {
-      opcao.vlr_total = opcao.vlr_total + 50,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
-      return opcao;
-    }
-
-    if (numLinhas == 3 && opcao.internetMovel == "100 GB") {
-      opcao.vlr_total = opcao.vlr_total + 100,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
-      return opcao;
-    }
-
-    if (numLinhas == 4 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
-      opcao.vlr_total = opcao.vlr_total + 50,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
-      return opcao;
-    }
-
-    if (numLinhas == 5 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
-      opcao.vlr_total = opcao.vlr_total + 100,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
-      return opcao;
-    }
-
-    if (numLinhas == 5 && opcao.internetMovel == "600 GB") {
-      opcao.vlr_total = opcao.vlr_total + 50,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
-      return opcao;
-    }
-
-    if (numLinhas == 6 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
-      opcao.vlr_total = opcao.vlr_total + 150,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 150
-      return opcao;
-    }
-
-    if (numLinhas == 6 && opcao.internetMovel == "600 GB") {
-      opcao.vlr_total = opcao.vlr_total + 100,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
-      return opcao;
-    }
-
+  if (numLinhas == 1) {
     return opcao;
+  }
+
+  if (numLinhas == 2 && (opcao.internetMovel == "50 GB" || opcao.internetMovel == "100 GB")) {
+    opcao.vlr_total = opcao.vlr_total + 50,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
+    return opcao;
+  }
+
+  if (numLinhas == 3 && opcao.internetMovel == "100 GB") {
+    opcao.vlr_total = opcao.vlr_total + 100,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
+    return opcao;
+  }
+
+  if (numLinhas == 4 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
+    opcao.vlr_total = opcao.vlr_total + 50,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
+    return opcao;
+  }
+
+  if (numLinhas == 5 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
+    opcao.vlr_total = opcao.vlr_total + 100,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
+    return opcao;
+  }
+
+  if (numLinhas == 5 && opcao.internetMovel == "600 GB") {
+    opcao.vlr_total = opcao.vlr_total + 50,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
+    return opcao;
+  }
+
+  if (numLinhas == 6 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
+    opcao.vlr_total = opcao.vlr_total + 150,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 150
+    return opcao;
+  }
+
+  if (numLinhas == 6 && opcao.internetMovel == "600 GB") {
+    opcao.vlr_total = opcao.vlr_total + 100,
+      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
+    return opcao;
+  }
+
+  return opcao;
 }
-/*
-function addValorTotal(opcao, numLinhas) {
-  opcao.forEach(x => {
-    if (numLinhas == 2 && (x.internetMovel == "50 GB" || x.internetMovel == "100 GB")) {
-      x.vlr_total = x.vlr_total + 50,
-        x.vlr_total_portin = x.vlr_total_portin + 50
-    }
-
-    if (numLinhas == 3 && x.internetMovel == "100 GB") {
-      x.vlr_total = x.vlr_total + 100,
-        x.vlr_total_portin = x.vlr_total_portin + 100
-    }
-
-    if (numLinhas == 4 && (x.internetMovel == "300 GB" || x.internetMovel == "200 GB")) {
-      x.vlr_total = x.vlr_total + 50,
-        x.vlr_total_portin = x.vlr_total_portin + 50
-    }
-
-    if (numLinhas == 5 && (x.internetMovel == "300 GB" || x.internetMovel == "200 GB")) {
-      x.vlr_total = x.vlr_total + 100,
-        x.vlr_total_portin = x.vlr_total_portin + 100
-    }
-
-    if (numLinhas == 5 && x.internetMovel == "600 GB") {
-      x.vlr_total = x.vlr_total + 50,
-        x.vlr_total_portin = x.vlr_total_portin + 50
-    }
-
-    if (numLinhas == 6 && (x.internetMovel == "300 GB" || x.internetMovel == "200 GB")) {
-      x.vlr_total = x.vlr_total + 150,
-        x.vlr_total_portin = x.vlr_total_portin + 150
-    }
-
-    if (numLinhas == 6 && x.internetMovel == "600 GB") {
-      x.vlr_total = x.vlr_total + 100,
-        x.vlr_total_portin = x.vlr_total_portin + 100
-    }
-  })
-
-  return resultado;
-}
-  */
-
 
 function sumValues() {
   var vlrMovel = document.getElementById("vlrmovel").value;
@@ -354,76 +310,74 @@ function sumValues() {
   return result
 }
 
-
-
 function showPlan(isPortAndUr, op1, op2, op3, op4, op5) {
 
   document.getElementById("faixaNome1").innerText = op1.internetMovel;
-  document.getElementById("vlr_movel1").innerText = op1.vlr_movel;
+  //document.getElementById("vlr_movel1").innerText = op1.vlr_movel;
   document.getElementById("ibl1").innerText = op1.internetBandaLarga;
-  document.getElementById("vlrBl1").innerText = op1.vlr_bl;
+  //document.getElementById("vlrBl1").innerText = op1.vlr_bl;
   document.getElementById("totalFaixa1").innerText = !isPortAndUr ? op1.vlr_total : op1.vlr_total_portin
 
   document.getElementById("faixaNome2").innerText = op2.internetMovel;
-  document.getElementById("vlr_movel2").innerText = op2.vlr_movel;
+  //document.getElementById("vlr_movel2").innerText = op2.vlr_movel;
   document.getElementById("ibl2").innerText = op2.internetBandaLarga;
-  document.getElementById("vlrBl2").innerText = op2.vlr_bl;
+  //document.getElementById("vlrBl2").innerText = op2.vlr_bl;
   document.getElementById("totalFaixa2").innerText = !isPortAndUr ? op2.vlr_total : op2.vlr_total_portin
 
   document.getElementById("faixaNome3").innerText = op3.internetMovel;
-  document.getElementById("vlr_movel3").innerText = op3.vlr_movel;
+  //document.getElementById("vlr_movel3").innerText = op3.vlr_movel;
   document.getElementById("ibl3").innerText = op3.internetBandaLarga;
-  document.getElementById("vlrBl3").innerText = op3.vlr_bl;
+  //document.getElementById("vlrBl3").innerText = op3.vlr_bl;
   document.getElementById("totalFaixa3").innerText = !isPortAndUr ? op3.vlr_total : op3.vlr_total_portin
 
   if (op4 != null) {
     document.getElementById("faixaNome4").innerText = op4.internetMovel;
-    document.getElementById("vlr_movel4").innerText = op4.vlr_movel;
+    //document.getElementById("vlr_movel4").innerText = op4.vlr_movel;
     document.getElementById("ibl4").innerText = op4.internetBandaLarga;
-    document.getElementById("vlrBl4").innerText = op4.vlr_bl;
+    //document.getElementById("vlrBl4").innerText = op4.vlr_bl;
     document.getElementById("totalFaixa4").innerText = !isPortAndUr ? op4.vlr_total : op4.vlr_total_portin
   }
 
   if (op5 != null) {
     document.getElementById("faixaNome5").innerText = op5.internetMovel;
-    document.getElementById("vlr_movel5").innerText = op5.vlr_movel;
+    //document.getElementById("vlr_movel5").innerText = op5.vlr_movel;
     document.getElementById("ibl5").innerText = op5.internetBandaLarga;
-    document.getElementById("vlrBl5").innerText = op5.vlr_bl;
+    //document.getElementById("vlrBl5").innerText = op5.vlr_bl;
     document.getElementById("totalFaixa5").innerText = !isPortAndUr ? op5.vlr_total : op5.vlr_total_portin
   }
+
+  updateImage(op1, op2, op3, op4, op5)
 }
-
-
 
 function clearHTML() {
   document.getElementById("faixaNome1").innerText = "";
-  document.getElementById("vlr_movel1").innerText = "";
+  //document.getElementById("vlr_movel1").innerText = "";
   document.getElementById("ibl1").innerText = "";
-  document.getElementById("vlrBl1").innerText = "";
+  //document.getElementById("vlrBl1").innerText = "";
   document.getElementById("totalFaixa1").innerText = "";
 
   document.getElementById("faixaNome2").innerText = "";
-  document.getElementById("vlr_movel2").innerText = "";
+  //document.getElementById("vlr_movel2").innerText = "";
   document.getElementById("ibl2").innerText = "";
-  document.getElementById("vlrBl2").innerText = "";
+  //document.getElementById("vlrBl2").innerText = "";
   document.getElementById("totalFaixa2").innerText = "";
 
   document.getElementById("faixaNome3").innerText = "";
-  document.getElementById("vlr_movel3").innerText = "";
+  //document.getElementById("vlr_movel3").innerText = "";
   document.getElementById("ibl3").innerText = "";
-  document.getElementById("vlrBl3").innerText = "";
+  //document.getElementById("vlrBl3").innerText = "";
   document.getElementById("totalFaixa3").innerText = "";
 
   document.getElementById("faixaNome4").innerText = "";
-  document.getElementById("vlr_movel4").innerText = "";
+  //document.getElementById("vlr_movel4").innerText = "";
   document.getElementById("ibl4").innerText = "";
-  document.getElementById("vlrBl4").innerText = "";
+  //document.getElementById("vlrBl4").innerText = "";
   document.getElementById("totalFaixa4").innerText = "";
 
   document.getElementById("faixaNome5").innerText = "";
-  document.getElementById("vlr_movel5").innerText = "";
+  //document.getElementById("vlr_movel5").innerText = "";
   document.getElementById("ibl5").innerText = "";
-  document.getElementById("vlrBl5").innerText = "";
+  //getElementById("vlrBl5").innerText = "";
   document.getElementById("totalFaixa5").innerText = "";
 }
 
@@ -437,8 +391,186 @@ function toggleTheme() {
 
   // Alterar o ícone do botão com base no tema
   if (body.classList.contains('dark-mode')) {
-      button.textContent = '🌜';
+    button.textContent = '🌜';
   } else {
-      button.textContent = '🌞';
+    button.textContent = '🌞';
   }
+}
+
+function updateImage(op1, op2, op3, op4, op5) {
+  var imgCombo1 = document.getElementById("imgCombo1");
+  var imgCombo2 = document.getElementById("imgCombo2");
+  var imgCombo3 = document.getElementById("imgCombo3");
+  var imgCombo4 = document.getElementById("imgCombo4");
+  var imgCombo5 = document.getElementById("imgCombo5");
+
+  var imgPosPre1 = document.getElementById("imgPosPre1");
+  imgPosPre1.src = "img/claroPos.png"
+
+  var imgPosPre2 = document.getElementById("imgPosPre2");
+  imgPosPre2.src = "img/claroPos.png"
+
+  var imgPosPre3 = document.getElementById("imgPosPre3");
+  imgPosPre3.src = "img/claroPos.png"
+
+  var imgPosPre4 = document.getElementById("imgPosPre4");
+  imgPosPre4.src = "img/claroPos.png"
+
+  var imgPosPre5 = document.getElementById("imgPosPre5");
+  imgPosPre5.src = "img/claroPos.png"
+
+  switch (op1.internetMovel) {
+    case "28 GB":
+      imgCombo1.src = "img/28gb.png";
+      imgPosPre1.src = "img/claroControle.png"
+      break;
+    case "35 GB":
+      imgCombo1.src = "img/35gb.png";
+      imgPosPre1.src = "img/claroControle.png"
+      break;
+    case "50 GB":
+      imgCombo1.src = "img/50gb.png";
+      break;
+    case "100 GB":
+      imgCombo1.src = "img/100gb.png";
+      break;
+    case "200 GB":
+      imgCombo1.src = "img/200gb.png";
+      break;
+    case "300 GB":
+      imgCombo1.src = "img/300gb.png";
+      break;
+    case "600 GB":
+      imgCombo1.src = "img/600gb.png";
+      break;
+    default:
+      // Opcional: código para imagem padrão ou ação alternativa
+      break;
+  }
+
+  switch (op2.internetMovel) {
+    case "28 GB":
+      imgCombo2.src = "img/28gb.png";
+      imgPosPre2.src = "img/claroControle.png"
+      break;
+    case "35 GB":
+      imgCombo2.src = "img/35gb.png";
+      imgPosPre2.src = "img/claroControle.png"
+      break;
+    case "50 GB":
+      imgCombo2.src = "img/50gb.png";
+      break;
+    case "100 GB":
+      imgCombo2.src = "img/100gb.png";
+      break;
+    case "200 GB":
+      imgCombo2.src = "img/200gb.png";
+      break;
+    case "300 GB":
+      imgCombo2.src = "img/300gb.png";
+      break;
+    case "600 GB":
+      imgCombo2.src = "img/600gb.png";
+      break;
+    default:
+      // Opcional: código para imagem padrão ou ação alternativa
+      break;
+  }
+
+  switch (op3.internetMovel) {
+    case "28 GB":
+      imgCombo3.src = "img/28gb.png";
+      imgPosPre3.src = "img/claroControle.png"
+      break;
+    case "35 GB":
+      imgCombo3.src = "img/35gb.png";
+      imgPosPre3.src = "img/claroControle.png"
+      break;
+    case "50 GB":
+      imgCombo3.src = "img/50gb.png";
+      break;
+    case "100 GB":
+      imgCombo3.src = "img/100gb.png";
+      break;
+    case "200 GB":
+      imgCombo3.src = "img/200gb.png";
+      break;
+    case "300 GB":
+      imgCombo3.src = "img/300gb.png";
+      break;
+    case "600 GB":
+      imgCombo3.src = "img/600gb.png";
+      break;
+    default:
+      // Opcional: código para imagem padrão ou ação alternativa
+      break;
+  }
+
+  switch (op4.internetMovel) {
+    case "28 GB":
+      imgCombo4.src = "img/28gb.png";
+      imgPosPre4.src = "img/claroControle.png"
+      break;
+    case "35 GB":
+      imgCombo4.src = "img/35gb.png";
+      imgPosPre4.src = "img/claroControle.png"
+      break;
+    case "50 GB":
+      imgCombo4.src = "img/50gb.png";
+      break;
+    case "100 GB":
+      imgCombo4.src = "img/100gb.png";
+      break;
+    case "200 GB":
+      imgCombo4.src = "img/200gb.png";
+      break;
+    case "300 GB":
+      imgCombo4.src = "img/300gb.png";
+      break;
+    case "600 GB":
+      imgCombo4.src = "img/600gb.png";
+      break;
+    default:
+      // Opcional: código para imagem padrão ou ação alternativa
+      break;
+  }
+
+  switch (op5.internetMovel) {
+    case "28 GB":
+      imgCombo5.src = "img/28gb.png";
+      imgPosPre5.src = "img/claroControle.png"
+      break;
+    case "35 GB":
+      imgCombo5.src = "img/35gb.png";
+      imgPosPre5.src = "img/claroControle.png"
+      break;
+    case "50 GB":
+      imgCombo5.src = "img/50gb.png";
+      break;
+    case "100 GB":
+      imgCombo5.src = "img/100gb.png";
+      break;
+    case "200 GB":
+      imgCombo5.src = "img/200gb.png";
+      break;
+    case "300 GB":
+      imgCombo5.src = "img/300gb.png";
+      break;
+    case "600 GB":
+      imgCombo5.src = "img/600gb.png";
+      break;
+    default:
+      // Opcional: código para imagem padrão ou ação alternativa
+      break;
+  }
+}
+
+
+function toggleSidebar() {
+  // Função para mostrar/ocultar o menu lateral
+  const sidebar = document.getElementById('sidebar');
+  const mainContent = document.getElementById('main-content');
+  
+  sidebar.classList.toggle('hidden');
+  mainContent.classList.toggle('expanded');
 }

@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <button id="themeToggle" onclick="toggleTheme()">🌞/🌜</button>
-    
-    <a>Valor Movel:</a><input id="vlrmovel" type="number" value="0"/><br>
-    <a>Valor Banda Larga:</a><input id="vlrbl" type="number" value="0"/><br>
-    <a>Quantidade de Linhas:</a>
+    <button class="toggle-btn" onclick="toggleSidebar()">≡</button>
+ <!-- Menu Lateral -->
+ <div class="sidebar" id="sidebar">
+
+    <h2>Entradas de Dados</h2>
+    <label>Valor Móvel:</label><input id="vlrmovel" type="number" value="0"/><br>
+    <label>Valor Banda Larga:</label><input id="vlrbl" type="number" value="0"/><br>
+    <label>Quantidade de Linhas:</label>
     <select id="linhas">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -20,64 +26,88 @@
         <option value="5">5</option>
         <option value="6">6</option>
     </select><br>
-    <a>Base UR:</a><input type="checkbox" id="baseUR"/><br>
-    <a>Portabilidade:</a><input type="checkbox" id="Port"/><br>
-
+    <label>Base UR:</label><input type="checkbox" id="baseUR"/><br>
+    <label>Portabilidade:</label><input type="checkbox" id="Port"/><br>
     <button onclick="filterByOptions()">Calcular</button><br>
-    <a>Valor Final:</a><input id="vfl" type="number" disabled/><br>
+    <label>Valor Final:</label><input id="vfl" type="number" disabled/><br>
+</div>
 
-    <div class="card-container hidden">
-        <!-- Card Melhor Opção -->
-        <div class="card">
-            <h3>Melhor Opção</h3>
-            <p><strong>Internet Móvel:</strong> <span id="faixaNome1"></span></p>
-            <p><strong>Valor Móvel:</strong> <span id="vlr_movel1"></span></p>
-            <p><strong>Internet Banda Larga:</strong> <span id="ibl1"></span></p>
-            <p><strong>Valor BL:</strong> <span id="vlrBl1"></span></p>
-            <p><strong>Valor Total:</strong> <span id="totalFaixa1"></span></p>
-        </div>
+    <!-- Conteúdo Principal -->
+    <div class="main-content" id="main-content">
+        <div class="card-container">
+            <!-- Card Melhor Opção -->
+            <div class="card">
+                <h3>Melhor Opção</h3>
+                <img id="imgPosPre1" src="" alt="Imagem" width="100" />
+                <p><strong>Internet Móvel:</strong> <span id="faixaNome1"></span></p>
+                <img id="imgCombo1" src="" alt="Imagem" width="200" />
+                <!-- <p><strong>Valor Móvel:</strong> <span id="vlr_movel1"></span></p> -->
+                <hr class="separator" />
+                <p><strong>Internet Banda Larga:</strong> <span id="ibl1"></span></p>
+                <!-- <p><strong>Valor BL:</strong> <span id="vlrBl1"></span></p> -->
+                <hr class="separator" />
+                <p><strong>Valor Total:</strong> <span id="totalFaixa1" class="highlighted-value"></span></p>
+            </div>
 
-        <!-- Card Foco em + Internet Móvel -->
-        <div class="card">
-            <h3>Foco em + Internet Móvel</h3>
-            <p><strong>Internet Móvel:</strong> <span id="faixaNome2"></span></p>
-            <p><strong>Valor Móvel:</strong> <span id="vlr_movel2"></span></p>
-            <p><strong>Internet Banda Larga:</strong> <span id="ibl2"></span></p>
-            <p><strong>Valor BL:</strong> <span id="vlrBl2"></span></p>
-            <p><strong>Valor Total:</strong> <span id="totalFaixa2"></span></p>
-        </div>
+            <!-- Card Foco em + Internet Móvel -->
+            <div class="card">
+                <h3>Foco em + Internet Móvel</h3>
+                <img id="imgPosPre2" src="" alt="Imagem" width="100" />
+                <p><strong>Internet Móvel:</strong> <span id="faixaNome2"></span></p>
+                <img id="imgCombo2" src="" alt="Imagem" width="200" />
+                <!-- <p><strong>Valor Móvel:</strong> <span id="vlr_movel2"></span></p>-->
+                <hr class="separator" />
+                <p><strong>Internet Banda Larga:</strong> <span id="ibl2"></span></p>
+                <!-- <p><strong>Valor BL:</strong> <span id="vlrBl2"></span></p>-->
+                <hr class="separator" />
+                <p><strong>Valor Total:</strong> <span id="totalFaixa2" class="highlighted-value"></span></p>
+            </div>
 
-        <!-- Card Foco em + Velocidade -->
-        <div class="card">
-            <h3>Foco em + Velocidade</h3>
-            <p><strong>Internet Móvel:</strong> <span id="faixaNome3"></span></p>
-            <p><strong>Valor Móvel:</strong> <span id="vlr_movel3"></span></p>
-            <p><strong>Internet Banda Larga:</strong> <span id="ibl3"></span></p>
-            <p><strong>Valor BL:</strong> <span id="vlrBl3"></span></p>
-            <p><strong>Valor Total:</strong> <span id="totalFaixa3"></span></p>
-        </div>
+            <!-- Card Foco em + Velocidade -->
+            <div class="card">
+                <h3>Foco em + Velocidade</h3>
+                <img id="imgPosPre3" src="" alt="Imagem" width="100" />
+                <p><strong>Internet Móvel:</strong> <span id="faixaNome3"></span></p>
+                <img id="imgCombo3" src="" alt="Imagem" width="200" />
+                <!-- <p><strong>Valor Móvel:</strong> <span id="vlr_movel3"></span></p>-->
+                <hr class="separator" />
+                <p><strong>Internet Banda Larga:</strong> <span id="ibl3"></span></p>
+                <!-- <p><strong>Valor BL:</strong> <span id="vlrBl3"></span></p>-->
+                <hr class="separator" />
+                <p><strong>Valor Total:</strong> <span id="totalFaixa3" class="highlighted-value"></span></p>
+            </div>
 
-        <!-- Card Opção Adc.1 -->
-        <div class="card">
-            <h3>Opção Adc.1</h3>
-            <p><strong>Internet Móvel:</strong> <span id="faixaNome4"></span></p>
-            <p><strong>Valor Móvel:</strong> <span id="vlr_movel4"></span></p>
-            <p><strong>Internet Banda Larga:</strong> <span id="ibl4"></span></p>
-            <p><strong>Valor BL:</strong> <span id="vlrBl4"></span></p>
-            <p><strong>Valor Total:</strong> <span id="totalFaixa4"></span></p>
-        </div>
+            <!-- Card Opção Adc.1 -->
+            <div class="card">
+                <h3>Opção Adc.1</h3>
+                <img id="imgPosPre4" src="" alt="Imagem" width="100" />
+                <p><strong>Internet Móvel:</strong> <span id="faixaNome4"></span></p>
+                <img id="imgCombo4" src="" alt="Imagem" width="200" />
+                <!-- <p><strong>Valor Móvel:</strong> <span id="vlr_movel4"></span></p>-->
+                <hr class="separator" />
+                <p><strong>Internet Banda Larga:</strong> <span id="ibl4"></span></p>
+                <!-- <p><strong>Valor BL:</strong> <span id="vlrBl4"></span></p> -->
+                <hr class="separator" />
+                <p><strong>Valor Total:</strong> <span id="totalFaixa4" class="highlighted-value"></span></p>
+            </div>
 
-        <!-- Card Opção Adc.2 -->
-        <div class="card">
-            <h3>Opção Adc.2</h3>
-            <p><strong>Internet Móvel:</strong> <span id="faixaNome5"></span></p>
-            <p><strong>Valor Móvel:</strong> <span id="vlr_movel5"></span></p>
-            <p><strong>Internet Banda Larga:</strong> <span id="ibl5"></span></p>
-            <p><strong>Valor BL:</strong> <span id="vlrBl5"></span></p>
-            <p><strong>Valor Total:</strong> <span id="totalFaixa5"></span></p>
+            <!-- Card Opção Adc.2 -->
+            <div class="card">
+                <h3>Opção Adc.2</h3>
+                <img id="imgPosPre5" src="" alt="Imagem" width="100" />
+                <p><strong>Internet Móvel:</strong> <span id="faixaNome5"></span></p>
+                <img id="imgCombo5" src="" alt="Imagem" width="200" />
+                <!-- <p><strong>Valor Móvel:</strong> <span id="vlr_movel5"></span></p>-->
+                <hr class="separator" />
+                <p><strong>Internet Banda Larga:</strong> <span id="ibl5"></span></p>
+                <!-- <p><strong>Valor BL:</strong> <span id="vlrBl5"></span></p>-->
+                <hr class="separator" />
+                <p><strong>Valor Total:</strong> <span id="totalFaixa5" class="highlighted-value"></span></p>
+            </div>
         </div>
     </div>
 
     <script src="script2.js"></script>
 </body>
+
 </html>

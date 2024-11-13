@@ -399,25 +399,41 @@ function toggleTheme() {
 
 function updateImage(op1, op2, op3, op4, op5) {
   var imgCombo1 = document.getElementById("imgCombo1");
+  imgCombo1.style.width = "200px";
+  
   var imgCombo2 = document.getElementById("imgCombo2");
+  imgCombo2.style.width = "200px";
+
   var imgCombo3 = document.getElementById("imgCombo3");
+  imgCombo3.style.width = "200px";
+
   var imgCombo4 = document.getElementById("imgCombo4");
+  imgCombo4.style.width = "200px";
+  
   var imgCombo5 = document.getElementById("imgCombo5");
+  imgCombo5.style.width = "200px";
+  
 
   var imgPosPre1 = document.getElementById("imgPosPre1");
   imgPosPre1.src = "img/claroPos.png"
+  imgPosPre1.style.width = "100px";
 
   var imgPosPre2 = document.getElementById("imgPosPre2");
   imgPosPre2.src = "img/claroPos.png"
+  imgPosPre2.style.width = "100px";
 
   var imgPosPre3 = document.getElementById("imgPosPre3");
   imgPosPre3.src = "img/claroPos.png"
+  imgPosPre3.style.width = "100px";
 
   var imgPosPre4 = document.getElementById("imgPosPre4");
   imgPosPre4.src = "img/claroPos.png"
+  imgPosPre4.style.width = "100px";
 
   var imgPosPre5 = document.getElementById("imgPosPre5");
   imgPosPre5.src = "img/claroPos.png"
+  imgPosPre5.style.width = "100px";
+
 
   switch (op1.internetMovel) {
     case "28 GB":
@@ -444,6 +460,7 @@ function updateImage(op1, op2, op3, op4, op5) {
       imgCombo1.src = "img/600gb.png";
       break;
     default:
+      imgCombo1.src = "img/nada.jpg";
       // Opcional: código para imagem padrão ou ação alternativa
       break;
   }
@@ -570,7 +587,7 @@ function toggleSidebar() {
   // Função para mostrar/ocultar o menu lateral
   const sidebar = document.getElementById('sidebar');
   const mainContent = document.getElementById('main-content');
-  
+
   sidebar.classList.toggle('hidden');
   mainContent.classList.toggle('expanded');
 }

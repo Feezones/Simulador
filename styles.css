@@ -139,6 +139,10 @@ tr:hover {
     color: #e60000; /* Vermelho Claro */
 }
 
+.card a{
+    color: #ffc118;
+}
+
 .card p {
     margin: 5px 0;
     color: #555;

@@ -602,6 +602,7 @@ function calcDif(op1, op2, op3, op4, op5, valor, isPortAndUr){
 
   // Função para definir o valor e cor de acordo com o valor negativo ou positivo
   function setVlrDif(element, difference) {
+    element.innerText = null;
     element.innerText = difference.toFixed(2);
     element.style.color = difference < 0 ? "red" : "black";
     element.style.fontWeight = "bold"

@@ -63,6 +63,8 @@ function buildCombo(combinacoes, valor, isPortAndUr, qtdLinhas) {
   op5 = addValorTotal(op5, qtdLinhas)
 
   showPlan(isPortAndUr, op1, op2, op3, op4, op5)
+  updateImage(op1, op2, op3, op4, op5)
+  calcDif(op1, op2, op3, op4, op5,valor,isPortAndUr)
 }
 
 function opcao1(combinacoes, valor) {
@@ -346,7 +348,6 @@ function showPlan(isPortAndUr, op1, op2, op3, op4, op5) {
     document.getElementById("totalFaixa5").innerText = !isPortAndUr ? op5.vlr_total : op5.vlr_total_portin
   }
 
-  updateImage(op1, op2, op3, op4, op5)
 }
 
 function clearHTML() {
@@ -590,4 +591,34 @@ function toggleSidebar() {
 
   sidebar.classList.toggle('hidden');
   mainContent.classList.toggle('expanded');
+}
+
+function calcDif(op1, op2, op3, op4, op5, valor, isPortAndUr){
+  var vlrDif1 = document.getElementById("vlrDif1");
+  var vlrDif2 = document.getElementById("vlrDif2");
+  var vlrDif3 = document.getElementById("vlrDif3");
+  var vlrDif4 = document.getElementById("vlrDif4");
+  var vlrDif5 = document.getElementById("vlrDif5");
+
+  // Função para definir o valor e cor de acordo com o valor negativo ou positivo
+  function setVlrDif(element, difference) {
+    element.innerText = difference.toFixed(2);
+    element.style.color = difference < 0 ? "red" : "black";
+    element.style.fontWeight = "bold"
+  }
+
+  if (isPortAndUr) {
+    setVlrDif(vlrDif1, op1.vlr_total_portin - valor);
+    setVlrDif(vlrDif2, op2.vlr_total_portin - valor);
+    setVlrDif(vlrDif3, op3.vlr_total_portin - valor);
+    setVlrDif(vlrDif4, op4.vlr_total_portin - valor);
+    setVlrDif(vlrDif5, op5.vlr_total_portin - valor);
+  } else {
+    setVlrDif(vlrDif1, op1.vlr_total - valor);
+    setVlrDif(vlrDif2, op2.vlr_total - valor);
+    setVlrDif(vlrDif3, op3.vlr_total - valor);
+    setVlrDif(vlrDif4, op4.vlr_total - valor);
+    setVlrDif(vlrDif5, op5.vlr_total - valor);
+  }
+  
 }

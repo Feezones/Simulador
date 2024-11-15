@@ -150,6 +150,12 @@ tr:hover {
 
 .card strong {
     color: #333;
+    font-size: 150%;
+}
+
+.fibra{
+    color: #e90000 !important;
+    font-weight: bold; 
 }
 
 .hidden {
@@ -256,6 +262,7 @@ tr:hover {
     margin-left: 270px;
     padding: 20px;
     transition: margin-left 0.3s ease;
+    display: none;
 }
 
 .main-content.expanded {

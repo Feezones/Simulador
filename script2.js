@@ -65,6 +65,7 @@ function buildCombo(combinacoes, valor, isPortAndUr, qtdLinhas) {
   showPlan(isPortAndUr, op1, op2, op3, op4, op5)
   updateImage(op1, op2, op3, op4, op5)
   calcDif(op1, op2, op3, op4, op5,valor,isPortAndUr)
+  showCards();
 }
 
 function opcao1(combinacoes, valor) {
@@ -622,4 +623,15 @@ function calcDif(op1, op2, op3, op4, op5, valor, isPortAndUr){
     setVlrDif(vlrDif5, op5.vlr_total - valor);
   }
   
+}
+
+function showCards(){
+  document.getElementById('main-content')
+    // Seleciona o container dos cards
+    const cardContainer = document.querySelector('.main-content');
+    
+    // Alterna a visibilidade dos cards
+    if (cardContainer.style.display === 'none' || cardContainer.style.display === '') {
+        cardContainer.style.display = 'block'; // Mostra os cards
+    }
 }

@@ -15,8 +15,17 @@
  <div class="sidebar" id="sidebar">
 
     <h2>-</h2>
-    <label>Valor Móvel:</label><input id="vlrmovel" type="number" value="0"/><br>
-    <label>Valor Banda Larga:</label><input id="vlrbl" type="number" value="0"/><br>
+    <h2>Simulador RSC - P&P</h2>
+    <label>Valor Móvel:</label>
+    <div class="input-container">
+        <span class="currency-symbol">R$</span>
+        <input  id="vlrmovel" type="number" min="0" placeholder="0,00" value="0"/><br>
+    </div>
+    <label>Valor Banda Larga:</label>
+    <div class="input-container">
+        <span class="currency-symbol">R$</span>
+        <input  id="vlrbl" type="number" min="0" placeholder="0,00" value="0"/><br>
+    </div>
     <label>Quantidade de Linhas:</label>
     <select id="linhas">
         <option value="1">1</option>
@@ -29,52 +38,63 @@
     <label>Base UR:</label><input type="checkbox" id="baseUR"/><br>
     <label>Portabilidade:</label><input type="checkbox" id="Port"/><br>
     <button onclick="filterByOptions()">Calcular</button><br>
-    <label>Valor Final:</label><input id="vfl" type="number" disabled/><br>
+    <label>Valor Final:</label><input id="vfl" type="number" placeholder="0,00" disabled/><br>
+    <a class="txtObs">Atualizado em: 05/11/2024</a>
+    <label class="txtObs">*Os valores apresentados neste simulador correspondem ao pagamento via boleto bancário.</label>
+    <label class="txtObs">Para pagamentos realizados por débito em conta corrente (DCC) com adesão à fatura digital, é necessário aplicar os seguintes descontos:</label>
+    <label class="txtObs">&bull; Internet fixa (Virtua): R$5,00 de desconto.</label>
+    <label class="txtObs">&bull; Planos Controle: R$5,00 de desconto.</label>
+    <label class="txtObs">&bull; Planos Pós-Conta: R$10,00 de desconto.</label>
+    <label class="txtObs">**Atenção: Os valores exibidos no simulador são apenas uma referência e devem ser confirmados nos materiais oficiais disponibilizados pelo marketing antes de serem ofertados. </label>
 </div>
 
     <!-- Conteúdo Principal -->
     <div class="main-content" id="main-content">
         <div class="card-container">
             <!-- Card Melhor Opção -->
-            <div class="card" onclick="showOtherCards('1')">
+            <div class="card">
                 <h3>Melhor Opção</h3>
                 <hr class="separator" />
                 <p class="fibra">Fibra+</p>
                 <p><!--<strong>Internet Banda Larga:</strong> -->
-                    <strong><span id="ibl1"></span></strong></p>
+                    <span class="vlrMegas" id="ibl1"></span><strong id="veloc1"></strong></p>
                 <img id="globoplay" src="img/globoplay.png" alt="Imagem" width="100"/>
                 <!-- <p><strong>Valor Móvel:</strong> <span id="vlr_movel1"></span></p> -->
                 <img id="bonus1" alt="Imagem" width="250"/>
                 <img id="imgPosPre1" src="img/nada.jpg" alt="Imagem" />
                 <p><!-- <strong>Internet Móvel:</strong> -->
-                    <strong> <span id="faixaNome1"></span></strong></p>
+                    <span id="faixaNome1" class="vlrMegas"></span><strong>GB</strong></p>
                 <img id="imgCombo1" src="img/nada.jpg" alt="Imagem" />
                 <!-- <p><strong>Valor BL:</strong> <span id="vlrBl1"></span></p> -->
                 <hr class="separator" />
-                <p><strong>Mult por:</strong> 
-                    <span id="totalFaixa1" class="highlighted-value"></span></p>
+                <p><strong>Por apenas:</strong></p>
+                    <strong>R$<span id="totalFaixa1" class="highlighted-value"></span></strong>
                 <hr class="separator" />
-                <p><strong>Vl. Adic:</strong> <span id="vlrDif1"></span></p>
+                <p><strong>Vl. Adic:</strong></p>
+                    <strong>R$<span id="vlrDif1"></span></strong>
             </div>
         
-            <!-- Card Foco em + Internet Móvel -->
+            <!-- Card Foco em + Internet Móvel --> 
             <div class="card">
                 <h3>Foco em + Internet Móvel</h3>
                 <hr class="separator" />
                 <p class="fibra">Fibra+</p>
-                <p><!-- <strong>Internet Banda Larga:</strong> --> <strong><span id="ibl2"></span></strong></p>
+                <p><!--<strong>Internet Banda Larga:</strong> -->
+                    <span class="vlrMegas" id="ibl2"></span><strong id="veloc2"></strong></p>
                 <img id="globoplay" src="img/globoplay.png" alt="Imagem" width="100"/>
                 <!-- <p><strong>Valor Móvel:</strong> <span id="vlr_movel2"></span></p> -->
                 <img id="bonus2" alt="Imagem" width="250"/>
                 <img id="imgPosPre2" src="img/nada.jpg" alt="Imagem" />
-                <p><!-- <strong>Internet Móvel:</strong> --> 
-                    <strong><span id="faixaNome2"></span></strong></p>
+                <p><!-- <strong>Internet Móvel:</strong> -->
+                    <span id="faixaNome2" class="vlrMegas"></span><strong>GB</strong></p>
                 <img id="imgCombo2" src="img/nada.jpg" alt="Imagem" />
                 <!-- <p><strong>Valor BL:</strong> <span id="vlrBl2"></span></p> -->
                 <hr class="separator" />
-                <p><strong>Multi por:</strong> <span id="totalFaixa2" class="highlighted-value"></span></p>
+                <p><strong>Por apenas:</strong></p>
+                    <strong>R$<span id="totalFaixa2" class="highlighted-value"></span></strong>
                 <hr class="separator" />
-                <p><strong>Vl. Adic:</strong> <span id="vlrDif2"></span></p>
+                <p><strong>Vl. Adic:</strong></p>
+                    <strong>R$<span id="vlrDif2"></span></strong>
             </div>
         
             <!-- Card Foco em + Velocidade -->
@@ -82,19 +102,22 @@
                 <h3>Foco em + Velocidade</h3>
                 <hr class="separator" />
                 <p class="fibra">Fibra+</p>
-                <p><!-- <strong>Internet Banda Larga:</strong> --> <strong><span id="ibl3"></span></strong></p>
+                <p><!--<strong>Internet Banda Larga:</strong> -->
+                    <span class="vlrMegas" id="ibl3"></span><strong id="veloc3"></strong></p>
                 <img id="globoplay" src="img/globoplay.png" alt="Imagem" width="100"/>
                 <!-- <p><strong>Valor Móvel:</strong> <span id="vlr_movel3"></span></p> -->
                 <img id="bonus3" alt="Imagem" width="250"/>
                 <img id="imgPosPre3" src="img/nada.jpg" alt="Imagem" />
-                <p><!-- <strong>Internet Móvel:</strong> --> 
-                    <strong><span id="faixaNome3"></span></strong></p>
+                <p><!-- <strong>Internet Móvel:</strong> -->
+                    <span id="faixaNome3" class="vlrMegas"></span><strong>GB</strong></p>
                 <img id="imgCombo3" src="img/nada.jpg" alt="Imagem" />
                 <!-- <p><strong>Valor BL:</strong> <span id="vlrBl3"></span></p> -->
                 <hr class="separator" />
-                <p><strong>Multi por:</strong> <span id="totalFaixa3" class="highlighted-value"></span></p>
+                <p><strong>Por apenas:</strong></p>
+                    <strong>R$<span id="totalFaixa3" class="highlighted-value"></span></strong>
                 <hr class="separator" />
-                <p><strong>Vl. Adic:</strong> <span id="vlrDif3"></span></p>
+                <p><strong>Vl. Adic:</strong></p>
+                    <strong>R$<span id="vlrDif3"></span></strong>
             </div>
         
             <!-- Card Opção Adc.1 -->
@@ -102,19 +125,22 @@
                 <h3>Opção Adc.1</h3>
                 <hr class="separator" />
                 <p class="fibra">Fibra+</p>
-                <p><!-- <strong>Internet Banda Larga:</strong> --> <strong><span id="ibl4"></span></strong></p>
+                <p><!--<strong>Internet Banda Larga:</strong> -->
+                    <span class="vlrMegas" id="ibl4"></span><strong id="veloc4"></strong></p>
                 <img id="globoplay" src="img/globoplay.png" alt="Imagem" width="100"/>
                 <!-- <p><strong>Valor Móvel:</strong> <span id="vlr_movel4"></span></p> -->
                 <img id="bonus4" alt="Imagem" width="250"/>
                 <img id="imgPosPre4" src="img/nada.jpg" alt="Imagem" />
-                <p><!-- <strong>Internet Móvel:</strong> --> 
-                    <strong><span id="faixaNome4"></span></strong></p>
+                <p><!-- <strong>Internet Móvel:</strong> -->
+                    <span id="faixaNome4" class="vlrMegas"></span><strong>GB</strong></p>
                 <img id="imgCombo4" src="img/nada.jpg" alt="Imagem" />
                 <!-- <p><strong>Valor BL:</strong> <span id="vlrBl4"></span></p> -->
                 <hr class="separator" />
-                <p><strong>Multi por:</strong> <span id="totalFaixa4" class="highlighted-value"></span></p>
+                <p><strong>Por apenas:</strong></p>
+                    <strong>R$<span id="totalFaixa4" class="highlighted-value"></span></strong>
                 <hr class="separator" />
-                <p><strong>Vl. Adic:</strong> <span id="vlrDif4"></span></p>
+                <p><strong>Vl. Adic:</strong></p>
+                    <strong>R$<span id="vlrDif4"></span></strong>
             </div>
         
             <!-- Card Opção Adc.2 -->
@@ -122,19 +148,22 @@
                 <h3>Opção Adc.2</h3>
                 <hr class="separator" />
                 <p class="fibra">Fibra+</p>
-                <p><!-- <strong>Internet Banda Larga:</strong> --> <strong><span id="ibl5"></span></strong></p>
+                <p><!--<strong>Internet Banda Larga:</strong> -->
+                    <span class="vlrMegas" id="ibl5"></span><strong id="veloc5"></strong></p>
                 <img id="globoplay" src="img/globoplay.png" alt="Imagem" width="100"/>
                 <!-- <p><strong>Valor Móvel:</strong> <span id="vlr_movel5"></span></p> -->
                 <img id="bonus5" alt="Imagem" width="250"/>
                 <img id="imgPosPre5" src="img/nada.jpg" alt="Imagem" />
-                <p><!-- <strong>Internet Móvel:</strong> --> 
-                    <strong><span id="faixaNome5"></span></strong></p>
+                <p><!-- <strong>Internet Móvel:</strong> -->
+                    <span id="faixaNome5" class="vlrMegas"></span><strong>GB</strong></p>
                 <img id="imgCombo5" src="img/nada.jpg" alt="Imagem" />
                 <!-- <p><strong>Valor BL:</strong> <span id="vlrBl5"></span></p> -->
                 <hr class="separator" />
-                <p><strong>Multi por:</strong> <span id="totalFaixa5" class="highlighted-value"></span></p>
+                <p><strong>Por apenas:</strong></p>
+                    <strong>R$<span id="totalFaixa5" class="highlighted-value"></span></strong>
                 <hr class="separator" />
-                <p><strong>Vl. Adic:</strong> <span id="vlrDif5"></span></p>
+                <p><strong>Vl. Adic:</strong></p>
+                    <strong>R$<span id="vlrDif5"></span></strong>
             </div>
         </div>        
     </div>

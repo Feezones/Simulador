@@ -1,6 +1,7 @@
 loadJson()
 var combinacoes;
 
+
 function loadJson() {
   // Usando fetch para carregar o arquivo JSON
   fetch('newjson.json')  // Especifique o caminho do arquivo JSON
@@ -118,13 +119,11 @@ function opcao3(combinacoes, valor, op1, op2) {
 
   // Função para converter internetBandaLarga para Megas
   function converterInternetBandaLarga(velocidade) {
-    if (velocidade.includes("Giga")) {
+    if (velocidade == "1") {
       return parseInt(velocidade) * 1000; // 1 Giga = 1000 Megas
-    } else if (velocidade.includes("Megas")) {
-      return parseInt(velocidade);
     } else {
-      return 0; // Caso algum formato inesperado apareça
-    }
+      return parseInt(velocidade);
+    } 
   }
 
   // Converte o valor de internetBandaLarga de op1 para Megas
@@ -192,12 +191,10 @@ function opcao5(combinacoes, valor, op1, op2, op3, op4) {
 
   // Função para converter internetBandaLarga para Megas
   function converterInternetBandaLarga(velocidade) {
-    if (velocidade.includes("Giga")) {
+    if (velocidade == "1") {
       return parseInt(velocidade) * 1000; // 1 Giga = 1000 Megas
-    } else if (velocidade.includes("Megas")) {
+    } else  {
       return parseInt(velocidade);
-    } else {
-      return 0; // Caso algum formato inesperado apareça
     }
   }
 
@@ -258,43 +255,43 @@ function addValorTotal(opcao, numLinhas) {
     return opcao;
   }
 
-  if (numLinhas == 2 && (opcao.internetMovel == "50 GB" || opcao.internetMovel == "100 GB")) {
+  if (numLinhas == 2 && (opcao.internetMovel == "50" || opcao.internetMovel == "100")) {
     opcao.vlr_total = opcao.vlr_total + 50,
       opcao.vlr_total_portin = opcao.vlr_total_portin + 50
     return opcao;
   }
 
-  if (numLinhas == 3 && opcao.internetMovel == "100 GB") {
+  if (numLinhas == 3 && opcao.internetMovel == "100") {
     opcao.vlr_total = opcao.vlr_total + 100,
       opcao.vlr_total_portin = opcao.vlr_total_portin + 100
     return opcao;
   }
 
-  if (numLinhas == 4 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
+  if (numLinhas == 4 && (opcao.internetMovel == "300" || opcao.internetMovel == "200")) {
     opcao.vlr_total = opcao.vlr_total + 50,
       opcao.vlr_total_portin = opcao.vlr_total_portin + 50
     return opcao;
   }
 
-  if (numLinhas == 5 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
+  if (numLinhas == 5 && (opcao.internetMovel == "300" || opcao.internetMovel == "200")) {
     opcao.vlr_total = opcao.vlr_total + 100,
       opcao.vlr_total_portin = opcao.vlr_total_portin + 100
     return opcao;
   }
 
-  if (numLinhas == 5 && opcao.internetMovel == "600 GB") {
+  if (numLinhas == 5 && opcao.internetMovel == "600") {
     opcao.vlr_total = opcao.vlr_total + 50,
       opcao.vlr_total_portin = opcao.vlr_total_portin + 50
     return opcao;
   }
 
-  if (numLinhas == 6 && (opcao.internetMovel == "300 GB" || opcao.internetMovel == "200 GB")) {
+  if (numLinhas == 6 && (opcao.internetMovel == "300" || opcao.internetMovel == "200")) {
     opcao.vlr_total = opcao.vlr_total + 150,
       opcao.vlr_total_portin = opcao.vlr_total_portin + 150
     return opcao;
   }
 
-  if (numLinhas == 6 && opcao.internetMovel == "600 GB") {
+  if (numLinhas == 6 && opcao.internetMovel == "600") {
     opcao.vlr_total = opcao.vlr_total + 100,
       opcao.vlr_total_portin = opcao.vlr_total_portin + 100
     return opcao;
@@ -318,35 +315,40 @@ function showPlan(isPortAndUr, op1, op2, op3, op4, op5) {
   document.getElementById("faixaNome1").innerText = op1.internetMovel;
   //document.getElementById("vlr_movel1").innerText = op1.vlr_movel;
   document.getElementById("ibl1").innerText = op1.internetBandaLarga;
+  document.getElementById("veloc1").innerText = op1.internetBandaLarga == 1 ? "Giga" : "Mega";
   //document.getElementById("vlrBl1").innerText = op1.vlr_bl;
-  document.getElementById("totalFaixa1").innerText = !isPortAndUr ? op1.vlr_total : op1.vlr_total_portin
+  document.getElementById("totalFaixa1").innerText = formatToMoney(!isPortAndUr ? op1.vlr_total : op1.vlr_total_portin)
 
   document.getElementById("faixaNome2").innerText = op2.internetMovel;
   //document.getElementById("vlr_movel2").innerText = op2.vlr_movel;
   document.getElementById("ibl2").innerText = op2.internetBandaLarga;
+  document.getElementById("veloc2").innerText = op2.internetBandaLarga == 1 ? "Giga" : "Mega";
   //document.getElementById("vlrBl2").innerText = op2.vlr_bl;
-  document.getElementById("totalFaixa2").innerText = !isPortAndUr ? op2.vlr_total : op2.vlr_total_portin
+  document.getElementById("totalFaixa2").innerText = formatToMoney(!isPortAndUr ? op2.vlr_total : op2.vlr_total_portin)
 
   document.getElementById("faixaNome3").innerText = op3.internetMovel;
   //document.getElementById("vlr_movel3").innerText = op3.vlr_movel;
   document.getElementById("ibl3").innerText = op3.internetBandaLarga;
+  document.getElementById("veloc3").innerText = op3.internetBandaLarga == 1 ? "Giga" : "Mega";
   //document.getElementById("vlrBl3").innerText = op3.vlr_bl;
-  document.getElementById("totalFaixa3").innerText = !isPortAndUr ? op3.vlr_total : op3.vlr_total_portin
+  document.getElementById("totalFaixa3").innerText = formatToMoney(!isPortAndUr ? op3.vlr_total : op3.vlr_total_portin)
 
   if (op4 != null) {
     document.getElementById("faixaNome4").innerText = op4.internetMovel;
     //document.getElementById("vlr_movel4").innerText = op4.vlr_movel;
     document.getElementById("ibl4").innerText = op4.internetBandaLarga;
+    document.getElementById("veloc4").innerText = op4.internetBandaLarga == 1 ? "Giga" : "Mega";
     //document.getElementById("vlrBl4").innerText = op4.vlr_bl;
-    document.getElementById("totalFaixa4").innerText = !isPortAndUr ? op4.vlr_total : op4.vlr_total_portin
+    document.getElementById("totalFaixa4").innerText = formatToMoney(!isPortAndUr ? op4.vlr_total : op4.vlr_total_portin)
   }
 
   if (op5 != null) {
     document.getElementById("faixaNome5").innerText = op5.internetMovel;
     //document.getElementById("vlr_movel5").innerText = op5.vlr_movel;
     document.getElementById("ibl5").innerText = op5.internetBandaLarga;
+    document.getElementById("veloc5").innerText = op5.internetBandaLarga == 1 ? "Giga" : "Mega";
     //document.getElementById("vlrBl5").innerText = op5.vlr_bl;
-    document.getElementById("totalFaixa5").innerText = !isPortAndUr ? op5.vlr_total : op5.vlr_total_portin
+    document.getElementById("totalFaixa5").innerText = formatToMoney(!isPortAndUr ? op5.vlr_total : op5.vlr_total_portin)
   }
 
 }
@@ -448,30 +450,30 @@ function updateImage(op1, op2, op3, op4, op5) {
   bonus5.src = "img/10GBblack.png"
 
   switch (op1.internetMovel) {
-    case "28 GB":
+    case "20":
       imgCombo1.src = "img/28gb.png";
       imgPosPre1.src = "img/claroControle.png"
       break;
-    case "35 GB":
+    case "25":
       imgCombo1.src = "img/35gb.png";
       imgPosPre1.src = "img/claroControle.png"
       break;
-    case "50 GB":
+    case "50":
       imgCombo1.src = "img/50gb.png";
       break;
-    case "100 GB":
+    case "100":
       imgCombo1.src = "img/100gb.png";
       bonus1.src = "img/30GBblack.png"
       break;
-    case "200 GB":
+    case "200":
       imgCombo1.src = "img/200gb.png";
       bonus1.src = "img/50GBblack.png"
       break;
-    case "300 GB":
+    case "300":
       imgCombo1.src = "img/300gb.png";
       bonus1.src = "img/50GBblack.png"
       break;
-    case "600 GB":
+    case "600":
       imgCombo1.src = "img/600gb.png";
       bonus1.src = "img/50GBblack.png"
       break;
@@ -482,30 +484,30 @@ function updateImage(op1, op2, op3, op4, op5) {
   }
 
   switch (op2.internetMovel) {
-    case "28 GB":
+    case "20":
       imgCombo2.src = "img/28gb.png";
       imgPosPre2.src = "img/claroControle.png"
       break;
-    case "35 GB":
+    case "25":
       imgCombo2.src = "img/35gb.png";
       imgPosPre2.src = "img/claroControle.png"
       break;
-    case "50 GB":
+    case "50":
       imgCombo2.src = "img/50gb.png";
       break;
-    case "100 GB":
+    case "100":
       imgCombo2.src = "img/100gb.png";
       bonus2.src = "img/30GBblack.png"
       break;
-    case "200 GB":
+    case "200":
       imgCombo2.src = "img/200gb.png";
       bonus2.src = "img/50GBblack.png"
       break;
-    case "300 GB":
+    case "300":
       imgCombo2.src = "img/300gb.png";
       bonus2.src = "img/50GBblack.png"
       break;
-    case "600 GB":
+    case "600":
       imgCombo2.src = "img/600gb.png";
       bonus2.src = "img/50GBblack.png"
       break;
@@ -515,31 +517,31 @@ function updateImage(op1, op2, op3, op4, op5) {
   }
 
   switch (op3.internetMovel) {
-    case "28 GB":
+    case "20":
       imgCombo3.src = "img/28gb.png";
       imgPosPre3.src = "img/claroControle.png"
       break;
-    case "35 GB":
+    case "25":
       imgCombo3.src = "img/35gb.png";
       imgPosPre3.src = "img/claroControle.png"
       break;
-    case "50 GB":
+    case "50":
       imgCombo3.src = "img/50gb.png";
       bonus3.src = "img/30GBblack.png"
       break;
-    case "100 GB":
+    case "100":
       imgCombo3.src = "img/100gb.png";
       bonus3.src = "img/50GBblack.png"
       break;
-    case "200 GB":
+    case "200":
       imgCombo3.src = "img/200gb.png";
       bonus3.src = "img/50GBblack.png"
       break;
-    case "300 GB":
+    case "300":
       imgCombo3.src = "img/300gb.png";
       bonus3.src = "img/50GBblack.png"
       break;
-    case "600 GB":
+    case "600":
       imgCombo3.src = "img/600gb.png";
       bonus3.src = "img/50GBblack.png"
       break;
@@ -549,31 +551,31 @@ function updateImage(op1, op2, op3, op4, op5) {
   }
 
   switch (op4.internetMovel) {
-    case "28 GB":
+    case "20":
       imgCombo4.src = "img/28gb.png";
       imgPosPre4.src = "img/claroControle.png"
       break;
-    case "35 GB":
+    case "25":
       imgCombo4.src = "img/35gb.png";
       imgPosPre4.src = "img/claroControle.png"
       break;
-    case "50 GB":
+    case "50":
       imgCombo4.src = "img/50gb.png";
       bonus4.src = "img/30GBblack.png"
       break;
-    case "100 GB":
+    case "100":
       imgCombo4.src = "img/100gb.png";
       bonus4.src = "img/50GBblack.png"
       break;
-    case "200 GB":
+    case "200":
       imgCombo4.src = "img/200gb.png";
       bonus4.src = "img/50GBblack.png"
       break;
-    case "300 GB":
+    case "300":
       imgCombo4.src = "img/300gb.png";
       bonus4.src = "img/50GBblack.png"
       break;
-    case "600 GB":
+    case "600":
       imgCombo4.src = "img/600gb.png";
       bonus4.src = "img/50GBblack.png"
       break;
@@ -583,31 +585,31 @@ function updateImage(op1, op2, op3, op4, op5) {
   }
 
   switch (op5.internetMovel) {
-    case "28 GB":
+    case "20":
       imgCombo5.src = "img/28gb.png";
       imgPosPre5.src = "img/claroControle.png"
       break;
-    case "35 GB":
+    case "25":
       imgCombo5.src = "img/35gb.png";
       imgPosPre5.src = "img/claroControle.png"
       break;
-    case "50 GB":
+    case "50":
       imgCombo5.src = "img/50gb.png";
       bonus5.src = "img/30GBblack.png"
       break;
-    case "100 GB":
+    case "100":
       imgCombo5.src = "img/100gb.png";
       bonus5.src = "img/50GBblack.png"
       break;
-    case "200 GB":
+    case "200":
       imgCombo5.src = "img/200gb.png";
       bonus5.src = "img/50GBblack.png"
       break;
-    case "300 GB":
+    case "300":
       imgCombo5.src = "img/300gb.png";
       bonus5.src = "img/50GBblack.png"
       break;
-    case "600 GB":
+    case "600":
       imgCombo5.src = "img/600gb.png";
       bonus5.src = "img/50GBblack.png"
       break;
@@ -637,7 +639,7 @@ function calcDif(op1, op2, op3, op4, op5, valor, isPortAndUr){
   // Função para definir o valor e cor de acordo com o valor negativo ou positivo
   function setVlrDif(element, difference) {
     element.innerText = null;
-    element.innerText = difference.toFixed(2);
+    element.innerText = formatToMoney(difference.toFixed(2))
     element.style.color = difference < 0 ? "red" : "black";
     element.style.fontWeight = "bold"
   }
@@ -668,3 +670,13 @@ function showCards(){
         cardContainer.style.display = 'block'; // Mostra os cards
     }
 }
+
+function formatToMoney(valor){
+  return valor.replace('.',',')
+}
+
+
+
+
+
+

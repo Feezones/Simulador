@@ -550,72 +550,76 @@ function updateImage(op1, op2, op3, op4, op5) {
       break;
   }
 
-  switch (op4.internetMovel) {
-    case "20":
-      imgCombo4.src = "img/28gb.png";
-      imgPosPre4.src = "img/claroControle.png"
-      break;
-    case "25":
-      imgCombo4.src = "img/35gb.png";
-      imgPosPre4.src = "img/claroControle.png"
-      break;
-    case "50":
-      imgCombo4.src = "img/50gb.png";
-      bonus4.src = "img/30GBblack.png"
-      break;
-    case "100":
-      imgCombo4.src = "img/100gb.png";
-      bonus4.src = "img/50GBblack.png"
-      break;
-    case "200":
-      imgCombo4.src = "img/200gb.png";
-      bonus4.src = "img/50GBblack.png"
-      break;
-    case "300":
-      imgCombo4.src = "img/300gb.png";
-      bonus4.src = "img/50GBblack.png"
-      break;
-    case "600":
-      imgCombo4.src = "img/600gb.png";
-      bonus4.src = "img/50GBblack.png"
-      break;
-    default:
-      // Opcional: código para imagem padrão ou ação alternativa
-      break;
+  if(op4.internetMovel != null){
+    switch (op4.internetMovel) {
+      case "20":
+        imgCombo4.src = "img/28gb.png";
+        imgPosPre4.src = "img/claroControle.png"
+        break;
+      case "25":
+        imgCombo4.src = "img/35gb.png";
+        imgPosPre4.src = "img/claroControle.png"
+        break;
+      case "50":
+        imgCombo4.src = "img/50gb.png";
+        bonus4.src = "img/30GBblack.png"
+        break;
+      case "100":
+        imgCombo4.src = "img/100gb.png";
+        bonus4.src = "img/50GBblack.png"
+        break;
+      case "200":
+        imgCombo4.src = "img/200gb.png";
+        bonus4.src = "img/50GBblack.png"
+        break;
+      case "300":
+        imgCombo4.src = "img/300gb.png";
+        bonus4.src = "img/50GBblack.png"
+        break;
+      case "600":
+        imgCombo4.src = "img/600gb.png";
+        bonus4.src = "img/50GBblack.png"
+        break;
+      default:
+        // Opcional: código para imagem padrão ou ação alternativa
+        break;
+    }
   }
 
-  switch (op5.internetMovel) {
-    case "20":
-      imgCombo5.src = "img/28gb.png";
-      imgPosPre5.src = "img/claroControle.png"
-      break;
-    case "25":
-      imgCombo5.src = "img/35gb.png";
-      imgPosPre5.src = "img/claroControle.png"
-      break;
-    case "50":
-      imgCombo5.src = "img/50gb.png";
-      bonus5.src = "img/30GBblack.png"
-      break;
-    case "100":
-      imgCombo5.src = "img/100gb.png";
-      bonus5.src = "img/50GBblack.png"
-      break;
-    case "200":
-      imgCombo5.src = "img/200gb.png";
-      bonus5.src = "img/50GBblack.png"
-      break;
-    case "300":
-      imgCombo5.src = "img/300gb.png";
-      bonus5.src = "img/50GBblack.png"
-      break;
-    case "600":
-      imgCombo5.src = "img/600gb.png";
-      bonus5.src = "img/50GBblack.png"
-      break;
-    default:
-      // Opcional: código para imagem padrão ou ação alternativa
-      break;
+  if(op5.internetMovel != null){
+    switch (op5.internetMovel) {
+      case "20":
+        imgCombo5.src = "img/28gb.png";
+        imgPosPre5.src = "img/claroControle.png"
+        break;
+      case "25":
+        imgCombo5.src = "img/35gb.png";
+        imgPosPre5.src = "img/claroControle.png"
+        break;
+      case "50":
+        imgCombo5.src = "img/50gb.png";
+        bonus5.src = "img/30GBblack.png"
+        break;
+      case "100":
+        imgCombo5.src = "img/100gb.png";
+        bonus5.src = "img/50GBblack.png"
+        break;
+      case "200":
+        imgCombo5.src = "img/200gb.png";
+        bonus5.src = "img/50GBblack.png"
+        break;
+      case "300":
+        imgCombo5.src = "img/300gb.png";
+        bonus5.src = "img/50GBblack.png"
+        break;
+      case "600":
+        imgCombo5.src = "img/600gb.png";
+        bonus5.src = "img/50GBblack.png"
+        break;
+      default:
+        // Opcional: código para imagem padrão ou ação alternativa
+        break;
+    }
   }
 }
 

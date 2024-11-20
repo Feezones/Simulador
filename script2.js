@@ -362,44 +362,44 @@ function addValorTotal(opcao, numLinhas) {
   }
 
   if (numLinhas == 2 && (opcao.internetMovel == "50" || opcao.internetMovel == "100")) {
-    opcao.vlr_total = opcao.vlr_total + 50,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.',','),
+      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 50).toFixed(2).replace('.',',')
     return opcao;
   }
 
   if (numLinhas == 3 && opcao.internetMovel == "100") {
-    opcao.vlr_total = opcao.vlr_total + 100,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.',','),
+      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 100).toFixed(2).replace('.',',')
     return opcao;
   }
 
   if (numLinhas == 4 && (opcao.internetMovel == "300" || opcao.internetMovel == "200")) {
-    opcao.vlr_total = opcao.vlr_total + 50,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.',',')
+      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 50).toFixed(2).replace('.',',')
     return opcao;
   }
 
   if (numLinhas == 5 && (opcao.internetMovel == "300" || opcao.internetMovel == "200")) {
-    opcao.vlr_total = opcao.vlr_total + 100,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.',','),
+      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 100).toFixed(2).replace('.',',')
     return opcao;
   }
 
   if (numLinhas == 5 && opcao.internetMovel == "600") {
-    opcao.vlr_total = opcao.vlr_total + 50,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 50
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.',','),
+      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 50).toFixed(2).replace('.',',')
     return opcao;
   }
 
   if (numLinhas == 6 && (opcao.internetMovel == "300" || opcao.internetMovel == "200")) {
-    opcao.vlr_total = opcao.vlr_total + 150,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 150
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 150).toFixed(2).replace('.',','),
+      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 150).toFixed(2).replace('.',',')
     return opcao;
   }
 
   if (numLinhas == 6 && opcao.internetMovel == "600") {
-    opcao.vlr_total = opcao.vlr_total + 100,
-      opcao.vlr_total_portin = opcao.vlr_total_portin + 100
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.',','),
+      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 100).toFixed(2).replace('.',',')
     return opcao;
   }
 
@@ -755,17 +755,17 @@ function calcDif(op1, op2, op3, op4, op5, valor, isPortAndUr) {
   }
 
   if (isPortAndUr) {
-    setVlrDif(vlrDif1, op1.vlr_total_portin - valor);
-    setVlrDif(vlrDif2, op2.vlr_total_portin - valor);
-    setVlrDif(vlrDif3, op3.vlr_total_portin - valor);
-    setVlrDif(vlrDif4, op4.vlr_total_portin - valor);
-    setVlrDif(vlrDif5, op5.vlr_total_portin - valor);
+    setVlrDif(vlrDif1, parseFloat(op1.vlr_total_portin) - valor);
+    setVlrDif(vlrDif2, parseFloat(op2.vlr_total_portin) - valor);
+    setVlrDif(vlrDif3, parseFloat(op3.vlr_total_portin) - valor);
+    setVlrDif(vlrDif4, parseFloat(op4.vlr_total_portin) - valor);
+    setVlrDif(vlrDif5, parseFloat(op5.vlr_total_portin) - valor);
   } else {
-    setVlrDif(vlrDif1, op1.vlr_total - valor);
-    setVlrDif(vlrDif2, op2.vlr_total - valor);
-    setVlrDif(vlrDif3, op3.vlr_total - valor);
-    setVlrDif(vlrDif4, op4.vlr_total - valor);
-    setVlrDif(vlrDif5, op5.vlr_total - valor);
+    setVlrDif(vlrDif1, parseFloat(op1.vlr_total) - valor);
+    setVlrDif(vlrDif2, parseFloat(op2.vlr_total) - valor);
+    setVlrDif(vlrDif3, parseFloat(op3.vlr_total) - valor);
+    setVlrDif(vlrDif4, parseFloat(op4.vlr_total) - valor);
+    setVlrDif(vlrDif5, parseFloat(op5.vlr_total) - valor);
   }
 
 }

@@ -4,7 +4,7 @@ var combinacoes;
 
 function loadJson() {
   // Usando fetch para carregar o arquivo JSON
-  fetch('newjson.json')  // Especifique o caminho do arquivo JSON
+  fetch('combinations.json')  // Especifique o caminho do arquivo JSON
     .then(response => {
       // Verificar se a resposta foi bem-sucedida
       if (!response.ok) {

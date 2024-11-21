@@ -40,7 +40,7 @@ function filterByOptions() {
 
   var totalValue = sumValues()
 
-  combinacoes = filtrarPorLinhas(qtdLinhas)
+  combinacoes = filtrarPorLinhas(qtdLinhas,isPortAndUr)
 
   // Exibir os cards
   //document.querySelector('.card-container').classList.remove('hidden');
@@ -345,24 +345,43 @@ function opcao5(combinacoes, valor, op1, op2, op3, op4, isPortAndUr) {
 
 }
 
-function filtrarPorLinhas(numLinhas) {
+function filtrarPorLinhas(numLinhas,isPortAndUr) {
   const resultado = [];
 
-  combinacoes.forEach(x => {
-    if (numLinhas === 1) {
-      resultado.push(x);
-    }
-
-    if (numLinhas === 2 && x.linhas >= 2) {
-      resultado.push(x);
-    } else
-      if (numLinhas === 3 && x.linhas >= 3) {
+  if(isPortAndUr){
+    combinacoes.forEach(x => {
+      if (numLinhas === 1) {
+        resultado.push(x);
+      }
+  
+      if (numLinhas === 2 && x.linhas >= 2) {
         resultado.push(x);
       } else
-        if (numLinhas > 3 && x.linhas > 3) {
+        if (numLinhas === 3 && x.linhas >= 3) {
           resultado.push(x);
-        }
-  });
+        } else
+          if (numLinhas > 3 && x.linhas > 3) {
+            resultado.push(x);
+          }
+    });
+  }else{
+    combinacoes.forEach(x => {
+      if (numLinhas === 1 && x.internetMovel != "50") {
+        resultado.push(x);
+      }
+  
+      if (numLinhas === 2 && x.linhas >= 2 && x.internetMovel != "50") {
+        resultado.push(x);
+      } else
+        if (numLinhas === 3 && x.linhas >= 3 && x.internetMovel != "50") {
+          resultado.push(x);
+        } else
+          if (numLinhas > 3 && x.linhas > 3 && x.internetMovel != "50") {
+            resultado.push(x);
+          }
+    });
+  }
+
 
   return resultado;
 }

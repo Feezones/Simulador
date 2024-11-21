@@ -536,7 +536,6 @@ function updateImage(op1, op2, op3, op4, op5) {
       break;
     case "50":
       imgCombo3.src = "img/50gb.png";
-      bonus3.src = "img/30GBblack.png"
       break;
     case "100":
       imgCombo3.src = "img/100gb.png";
@@ -571,7 +570,6 @@ function updateImage(op1, op2, op3, op4, op5) {
         break;
       case "50":
         imgCombo4.src = "img/50gb.png";
-        bonus4.src = "img/30GBblack.png"
         break;
       case "100":
         imgCombo4.src = "img/100gb.png";
@@ -607,7 +605,6 @@ function updateImage(op1, op2, op3, op4, op5) {
         break;
       case "50":
         imgCombo5.src = "img/50gb.png";
-        bonus5.src = "img/30GBblack.png"
         break;
       case "100":
         imgCombo5.src = "img/100gb.png";

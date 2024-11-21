@@ -352,3 +352,18 @@ input[type="number"] {
   #vlrbl:focus {
     border-color: #007bff;
   }
+
+  .msg {
+    position: fixed;
+    top: 20px; /* A distância do topo */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Compensa o deslocamento para a esquerda */
+    background-color: #e60000;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+}
+

@@ -52,10 +52,10 @@ function filterByOptions() {
 
 function buildCombo(combinacoes, valor, isPortAndUr, qtdLinhas) {
   var op1 = opcao1(combinacoes, valor, isPortAndUr);
-  var op2 = opcao2(combinacoes, valor, op1);
-  var op3 = opcao3(combinacoes, valor, op1, op2);
-  var op4 = opcao4(combinacoes, valor, op1, op2, op3);
-  var op5 = opcao5(combinacoes, valor, op1, op2, op3, op4);
+  var op2 = opcao2(combinacoes, valor, op1,isPortAndUr);
+  var op3 = opcao3(combinacoes, valor, op1, op2,isPortAndUr);
+  var op4 = opcao4(combinacoes, valor, op1, op2, op3,isPortAndUr);
+  var op5 = opcao5(combinacoes, valor, op1, op2, op3, op4,isPortAndUr);
 
   op1 = addValorTotal(op1, qtdLinhas)
   op2 = addValorTotal(op2, qtdLinhas)
@@ -161,7 +161,7 @@ function opcao3(combinacoes, valor, op1, op2, isPortAndUr) {
   }
 
   // Converte o valor de internetBandaLarga de op1 para Megas
-  const bandaLargaOp1 = converterInternetBandaLarga(op2.internetBandaLarga);
+  const bandaLargaOp1 = converterInternetBandaLarga(op1.internetBandaLarga);
 
   // Converte o valor de internetMovel da combinação atual para número
   //const internetMovelop1 = parseInt(op1.internetMovel.replace(' GB', ''));
@@ -218,6 +218,15 @@ function opcao4(combinacoes, valor, op1, op2, op3, isPortAndUr) {
   let menorDiferenca = Infinity;
   let melhorCombinacao = null;
 
+    // Função para converter internetBandaLarga para Megas
+    function converterInternetBandaLarga(velocidade) {
+      if (velocidade == "1") {
+        return parseInt(velocidade) * 1000; // 1 Giga = 1000 Megas
+      } else {
+        return parseInt(velocidade);
+      }
+    }
+
   // Converte o valor de internetMovel de op1 para número
   const internetMovelOp2 = parseInt(op2.internetMovel.replace(' GB', ''));
 
@@ -229,11 +238,14 @@ function opcao4(combinacoes, valor, op1, op2, op3, isPortAndUr) {
       // Verifica qual campo de valor usar dependendo do isPortAndUr
       diferencaAtual = Math.abs(combinacao.vlr_total_portin - valor);
 
+            // Converte o valor de internetBandaLarga da combinação atual para Megas
+            const bandaLargaAtual = converterInternetBandaLarga(combinacao.internetBandaLarga);
+
       // Converte o valor de internetMovel da combinação atual para número
       const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
 
       // Verifica se a diferença é menor e o internetMovel é maior que o da op1
-      if (diferencaAtual < menorDiferenca && internetMovelAtual == internetMovelOp2 && combinacao.internetBandaLarga > op2.internetBandaLarga && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id) {
+      if (diferencaAtual < menorDiferenca && combinacao.vlr_total_portin > op2.vlr_total_portin && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id) {
         menorDiferenca = diferencaAtual; // Atualiza a menor diferença
         melhorCombinacao = combinacao;   // Atualiza a melhor combinação
       }
@@ -252,7 +264,7 @@ function opcao4(combinacoes, valor, op1, op2, op3, isPortAndUr) {
       const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
 
       // Verifica se a diferença é menor e o internetMovel é maior que o da op1
-      if (diferencaAtual < menorDiferenca && internetMovelAtual == internetMovelOp2 && combinacao.internetBandaLarga > op2.internetBandaLarga && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id) {
+      if (diferencaAtual < menorDiferenca && combinacao.vlr_total > op2.vlr_total && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id) {
         menorDiferenca = diferencaAtual; // Atualiza a menor diferença
         melhorCombinacao = combinacao;   // Atualiza a melhor combinação
       }
@@ -300,7 +312,7 @@ function opcao5(combinacoes, valor, op1, op2, op3, op4, isPortAndUr) {
       const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
 
       // Verifica se a diferença é menor e internetBandaLarga é maior que a de op1
-      if (diferencaAtual < menorDiferenca && bandaLargaAtual == bandaLargaOp3 && internetMovelAtual > internetMovelop3 && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id && combinacao.id != op4.id) {
+      if (diferencaAtual < menorDiferenca && combinacao.vlr_total_portin > op4.vlr_total_portin && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id && combinacao.id != op4.id) {
         menorDiferenca = diferencaAtual; // Atualiza a menor diferença
         melhorCombinacao = combinacao;   // Atualiza a melhor combinação
       }
@@ -322,7 +334,7 @@ function opcao5(combinacoes, valor, op1, op2, op3, op4, isPortAndUr) {
       const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
 
       // Verifica se a diferença é menor e internetBandaLarga é maior que a de op1
-      if (diferencaAtual < menorDiferenca && bandaLargaAtual == bandaLargaOp3 && internetMovelAtual > internetMovelop3 && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id && combinacao.id != op4.id) {
+      if (diferencaAtual < menorDiferenca && combinacao.vlr_total > op4.vlr_total && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id && combinacao.id != op4.id) {
         menorDiferenca = diferencaAtual; // Atualiza a menor diferença
         melhorCombinacao = combinacao;   // Atualiza a melhor combinação
       }
@@ -656,7 +668,7 @@ function updateImage(op1, op2, op3, op4, op5) {
       break;
   }
 
-  if (op4.internetMovel != null) {
+  if (op4 != null) {
     switch (op4.internetMovel) {
       case "20":
         imgCombo4.src = "img/28gb.png";
@@ -692,7 +704,7 @@ function updateImage(op1, op2, op3, op4, op5) {
     }
   }
 
-  if (op5.internetMovel != null) {
+  if (op5 != null) {
     switch (op5.internetMovel) {
       case "20":
         imgCombo5.src = "img/28gb.png";
@@ -758,16 +770,24 @@ function calcDif(op1, op2, op3, op4, op5, valor, isPortAndUr) {
     setVlrDif(vlrDif1, parseFloat(op1.vlr_total_portin) - valor);
     setVlrDif(vlrDif2, parseFloat(op2.vlr_total_portin) - valor);
     setVlrDif(vlrDif3, parseFloat(op3.vlr_total_portin) - valor);
-    setVlrDif(vlrDif4, parseFloat(op4.vlr_total_portin) - valor);
-    setVlrDif(vlrDif5, parseFloat(op5.vlr_total_portin) - valor);
+    if(op4){
+      setVlrDif(vlrDif4, parseFloat(op4.vlr_total_portin) - valor);
+    }
+    if(op5){
+      setVlrDif(vlrDif5, parseFloat(op5.vlr_total_portin) - valor);
+    }
+
   } else {
     setVlrDif(vlrDif1, parseFloat(op1.vlr_total) - valor);
     setVlrDif(vlrDif2, parseFloat(op2.vlr_total) - valor);
     setVlrDif(vlrDif3, parseFloat(op3.vlr_total) - valor);
-    setVlrDif(vlrDif4, parseFloat(op4.vlr_total) - valor);
-    setVlrDif(vlrDif5, parseFloat(op5.vlr_total) - valor);
+    if(op4){
+      setVlrDif(vlrDif4, parseFloat(op4.vlr_total) - valor);
+    }
+    if(op5){
+      setVlrDif(vlrDif5, parseFloat(op5.vlr_total) - valor);
+    }
   }
-
 }
 
 function showCards() {

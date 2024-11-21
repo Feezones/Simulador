@@ -201,13 +201,13 @@
         "faixa18": {
             "id": 19,
             "internetBandaLarga": "1",
-            "vlr_bl": "304.90",
+            "vlr_bl": 299.90,
             "internetMovel": "20",
             "linhas": 1,
             "vlr_movel": 54.9,
             "vlr_movel_port": 54.9,
-            "vlr_total": "359.90",
-            "vlr_total_portin": "359.90"
+            "vlr_total": "354.90",
+            "vlr_total_portin": "354.90"
         },
         "faixa19": {
             "id": 20,

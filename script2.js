@@ -588,11 +588,11 @@ function updateImage(op1, op2, op3, op4, op5) {
 
   switch (op1.internetMovel) {
     case "20":
-      imgCombo1.src = "img/28gb.png";
+      imgCombo1.src = "img/20gb.jpg";
       imgPosPre1.src = "img/claroControle.png"
       break;
     case "25":
-      imgCombo1.src = "img/35gb.png";
+      imgCombo1.src = "img/25gb.jpg";
       imgPosPre1.src = "img/claroControle.png"
       break;
     case "50":
@@ -622,11 +622,11 @@ function updateImage(op1, op2, op3, op4, op5) {
 
   switch (op2.internetMovel) {
     case "20":
-      imgCombo2.src = "img/28gb.png";
+      imgCombo2.src = "img/20gb.jpg";
       imgPosPre2.src = "img/claroControle.png"
       break;
     case "25":
-      imgCombo2.src = "img/35gb.png";
+      imgCombo2.src = "img/25gb.jpg";
       imgPosPre2.src = "img/claroControle.png"
       break;
     case "50":
@@ -655,11 +655,11 @@ function updateImage(op1, op2, op3, op4, op5) {
 
   switch (op3.internetMovel) {
     case "20":
-      imgCombo3.src = "img/28gb.png";
+      imgCombo3.src = "img/20gb.jpg";
       imgPosPre3.src = "img/claroControle.png"
       break;
     case "25":
-      imgCombo3.src = "img/35gb.png";
+      imgCombo3.src = "img/25gb.jpg";
       imgPosPre3.src = "img/claroControle.png"
       break;
     case "50":
@@ -690,11 +690,11 @@ function updateImage(op1, op2, op3, op4, op5) {
   if (op4 != null) {
     switch (op4.internetMovel) {
       case "20":
-        imgCombo4.src = "img/28gb.png";
+        imgCombo4.src = "img/20gb.jpg";
         imgPosPre4.src = "img/claroControle.png"
         break;
       case "25":
-        imgCombo4.src = "img/35gb.png";
+        imgCombo4.src = "img/25gb.jpg";
         imgPosPre4.src = "img/claroControle.png"
         break;
       case "50":
@@ -726,11 +726,11 @@ function updateImage(op1, op2, op3, op4, op5) {
   if (op5 != null) {
     switch (op5.internetMovel) {
       case "20":
-        imgCombo5.src = "img/28gb.png";
+        imgCombo5.src = "img/20gb.jpg";
         imgPosPre5.src = "img/claroControle.png"
         break;
       case "25":
-        imgCombo5.src = "img/35gb.png";
+        imgCombo5.src = "img/25gb.jpg";
         imgPosPre5.src = "img/claroControle.png"
         break;
       case "50":

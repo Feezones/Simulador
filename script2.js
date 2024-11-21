@@ -156,7 +156,7 @@ function opcao3(combinacoes, valor, op1, op2,qtdLinhas) {
     }
 
     if(qtdLinhas == 6){
-      if (diferencaAtual < menorDiferenca && bandaLargaAtual >= op2.internetBandaLarga && combinacao.id != op1.id) {
+      if (diferencaAtual < menorDiferenca && bandaLargaAtual >= op2.internetBandaLarga && combinacao.id != op1.id && combinacao.id != op2.id) {
         menorDiferenca = diferencaAtual; // Atualiza a menor diferença
         melhorCombinacao = combinacao;   // Atualiza a melhor combinação
       }
@@ -202,7 +202,7 @@ function opcao4(combinacoes, valor, op1, op2, op3,qtdLinhas) {
     }
 
     if(qtdLinhas == 6){
-      if (diferencaAtual < menorDiferenca && combinacao.vlr_total_portin >= op1.vlr_total_portin && combinacao.id != op1.id) {
+      if (diferencaAtual < menorDiferenca && combinacao.vlr_total_portin >= op1.vlr_total_portin && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id) {
         menorDiferenca = diferencaAtual; // Atualiza a menor diferença
         melhorCombinacao = combinacao;   // Atualiza a melhor combinação
       }
@@ -254,7 +254,7 @@ function opcao5(combinacoes, valor, op1, op2, op3, op4, qtdLinhas) {
     }
 
     if(qtdLinhas == 6){
-      if (diferencaAtual < menorDiferenca && combinacao.vlr_total_portin >= op4.vlr_total_portin && combinacao.id != op1.id) {
+      if (diferencaAtual < menorDiferenca && combinacao.vlr_total_portin >= op4.vlr_total_portin && combinacao.id != op1.id && combinacao.id != op2.id && combinacao.id != op3.id && combinacao.id != op4.id) {
         menorDiferenca = diferencaAtual; // Atualiza a menor diferença
         melhorCombinacao = combinacao;   // Atualiza a melhor combinação
       }

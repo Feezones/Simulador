@@ -181,7 +181,7 @@ function opcao3(combinacoes, valor, op1, op2, isPortAndUr) {
       const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
 
       // Verifica se a diferença é menor e internetBandaLarga é maior que a de op1
-      if (diferencaAtual < menorDiferenca && bandaLargaAtual > bandaLargaOp1 && combinacao.id != op1.id && combinacao.id != op2.id) {
+      if (diferencaAtual < menorDiferenca && bandaLargaAtual > op2.internetBandaLarga && combinacao.id != op1.id && combinacao.id != op2.id) {
         menorDiferenca = diferencaAtual; // Atualiza a menor diferença
         melhorCombinacao = combinacao;   // Atualiza a melhor combinação
       }
@@ -203,7 +203,7 @@ function opcao3(combinacoes, valor, op1, op2, isPortAndUr) {
       const internetMovelAtual = parseInt(combinacao.internetMovel.replace(' GB', ''));
 
       // Verifica se a diferença é menor e internetBandaLarga é maior que a de op1
-      if (diferencaAtual < menorDiferenca && bandaLargaAtual > bandaLargaOp1 && combinacao.id != op1.id && combinacao.id != op2.id) {
+      if (diferencaAtual < menorDiferenca && bandaLargaAtual > op2.internetBandaLarga && combinacao.id != op1.id && combinacao.id != op2.id) {
         menorDiferenca = diferencaAtual; // Atualiza a menor diferença
         melhorCombinacao = combinacao;   // Atualiza a melhor combinação
       }

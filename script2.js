@@ -52,10 +52,10 @@ function filterByOptions() {
 
 function buildCombo(combinacoes, valor, qtdLinhas) {
   var op1 = opcao1(combinacoes, valor);
-  var op2 = opcao2(combinacoes, valor, op1);
-  var op3 = opcao3(combinacoes, valor, op1, op2);
-  var op4 = opcao4(combinacoes, valor, op1, op2, op3);
-  var op5 = opcao5(combinacoes, valor, op1, op2, op3, op4);
+  var op2 = opcao2(combinacoes, valor, op1,qtdLinhas);
+  var op3 = opcao3(combinacoes, valor, op1, op2,qtdLinhas);
+  var op4 = opcao4(combinacoes, valor, op1, op2, op3,qtdLinhas);
+  var op5 = opcao5(combinacoes, valor, op1, op2, op3, op4,qtdLinhas);
 
   op1 = addValorTotal(op1, qtdLinhas)
   op2 = addValorTotal(op2, qtdLinhas)
@@ -85,7 +85,7 @@ function opcao1(combinacoes, valor) {
   return melhorCombinacao;
 }
 
-function opcao2(combinacoes, valor, op1) {
+function opcao2(combinacoes, valor, op1, qtdLinhas) {
   let menorDiferenca = Infinity;
   let melhorCombinacao = null;
 
@@ -106,12 +106,19 @@ function opcao2(combinacoes, valor, op1) {
       menorDiferenca = diferencaAtual; // Atualiza a menor diferença
       melhorCombinacao = combinacao;   // Atualiza a melhor combinação
     }
+
+    if(qtdLinhas == 6){
+      if (diferencaAtual < menorDiferenca && internetMovelAtual >= internetMovelOp1 && combinacao.id != op1.id) {
+        menorDiferenca = diferencaAtual; // Atualiza a menor diferença
+        melhorCombinacao = combinacao;   // Atualiza a melhor combinação
+      }
+    }
   });
 
   return melhorCombinacao;
 }
 
-function opcao3(combinacoes, valor, op1, op2) {
+function opcao3(combinacoes, valor, op1, op2,qtdLinhas) {
   let menorDiferenca = Infinity;
   let melhorCombinacao = null;
 
@@ -147,12 +154,19 @@ function opcao3(combinacoes, valor, op1, op2) {
       menorDiferenca = diferencaAtual; // Atualiza a menor diferença
       melhorCombinacao = combinacao;   // Atualiza a melhor combinação
     }
+
+    if(qtdLinhas == 6){
+      if (diferencaAtual < menorDiferenca && bandaLargaAtual >= op2.internetBandaLarga && combinacao.id != op1.id) {
+        menorDiferenca = diferencaAtual; // Atualiza a menor diferença
+        melhorCombinacao = combinacao;   // Atualiza a melhor combinação
+      }
+    }
   });
 
   return melhorCombinacao;
 }
 
-function opcao4(combinacoes, valor, op1, op2, op3) {
+function opcao4(combinacoes, valor, op1, op2, op3,qtdLinhas) {
   let menorDiferenca = Infinity;
   let melhorCombinacao = null;
 
@@ -186,12 +200,19 @@ function opcao4(combinacoes, valor, op1, op2, op3) {
       menorDiferenca = diferencaAtual; // Atualiza a menor diferença
       melhorCombinacao = combinacao;   // Atualiza a melhor combinação
     }
+
+    if(qtdLinhas == 6){
+      if (diferencaAtual < menorDiferenca && combinacao.vlr_total_portin >= op1.vlr_total_portin && combinacao.id != op1.id) {
+        menorDiferenca = diferencaAtual; // Atualiza a menor diferença
+        melhorCombinacao = combinacao;   // Atualiza a melhor combinação
+      }
+    }
   });
 
   return melhorCombinacao;
 }
 
-function opcao5(combinacoes, valor, op1, op2, op3, op4) {
+function opcao5(combinacoes, valor, op1, op2, op3, op4, qtdLinhas) {
   if (op4 == null)
     return null;
 
@@ -231,6 +252,13 @@ function opcao5(combinacoes, valor, op1, op2, op3, op4) {
       menorDiferenca = diferencaAtual; // Atualiza a menor diferença
       melhorCombinacao = combinacao;   // Atualiza a melhor combinação
     }
+
+    if(qtdLinhas == 6){
+      if (diferencaAtual < menorDiferenca && combinacao.vlr_total_portin >= op4.vlr_total_portin && combinacao.id != op1.id) {
+        menorDiferenca = diferencaAtual; // Atualiza a menor diferença
+        melhorCombinacao = combinacao;   // Atualiza a melhor combinação
+      }
+    }
   });
 
   return melhorCombinacao;
@@ -250,7 +278,11 @@ function filtrarPorLinhas(numLinhas) {
       if (numLinhas === 3 && x.linhas >= 3) {
         resultado.push(x);
       } else
-        if (numLinhas > 3 && x.linhas > 3) {
+        if (numLinhas === 4 && x.linhas >= 4) {
+          resultado.push(x);
+        } else if (numLinhas === 5 && x.linhas >= 5) {
+          resultado.push(x);
+        } else if (numLinhas === 6 && x.linhas == 6) {
           resultado.push(x);
         }
   });
@@ -264,44 +296,32 @@ function addValorTotal(opcao, numLinhas) {
     return opcao;
   }
 
-  if (numLinhas == 2 && (opcao.internetMovel == "50" || opcao.internetMovel == "100")) {
+  if (numLinhas == 2 && opcao.internetMovel == "50") {
     opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.', ','),
       opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 50).toFixed(2).replace('.', ',')
     return opcao;
   }
 
   if (numLinhas == 3 && opcao.internetMovel == "100") {
-    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.', ','),
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 100).toFixed(2).replace('.', ','),
       opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 100).toFixed(2).replace('.', ',')
     return opcao;
   }
 
-  if (numLinhas == 4 && (opcao.internetMovel == "300" || opcao.internetMovel == "200")) {
-    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.', ',')
-    opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 50).toFixed(2).replace('.', ',')
+  if (numLinhas == 4 && opcao.internetMovel == "200") {
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 100).toFixed(2).replace('.', ',')
+    opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 100).toFixed(2).replace('.', ',')
     return opcao;
   }
 
-  if (numLinhas == 5 && (opcao.internetMovel == "300" || opcao.internetMovel == "200")) {
-    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.', ','),
+  if (numLinhas == 5 && opcao.internetMovel == "300") {
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 100).toFixed(2).replace('.', ','),
       opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 100).toFixed(2).replace('.', ',')
-    return opcao;
-  }
-
-  if (numLinhas == 5 && opcao.internetMovel == "600") {
-    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.', ','),
-      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 50).toFixed(2).replace('.', ',')
-    return opcao;
-  }
-
-  if (numLinhas == 6 && (opcao.internetMovel == "300" || opcao.internetMovel == "200")) {
-    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 150).toFixed(2).replace('.', ','),
-      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 150).toFixed(2).replace('.', ',')
     return opcao;
   }
 
   if (numLinhas == 6 && opcao.internetMovel == "600") {
-    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.', ','),
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 100).toFixed(2).replace('.', ','),
       opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 100).toFixed(2).replace('.', ',')
     return opcao;
   }

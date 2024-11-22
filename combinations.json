@@ -208,17 +208,6 @@
             "vlr_movel_port": 189.90,
             "vlr_total": "519.90",
             "vlr_total_portin": "489.90"
-        },
-        "faixa27": {
-            "id": 28,
-            "internetBandaLarga": "1",
-            "vlr_bl": 299.9,
-            "internetMovel": "600",
-            "linhas": 6,
-            "vlr_movel": 319.9,
-            "vlr_movel_port": 319.9,
-            "vlr_total": "619.90",
-            "vlr_total_portin": "619.90"
         }
     }
 }

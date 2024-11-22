@@ -320,7 +320,7 @@ function addValorTotal(opcao, numLinhas) {
     return opcao;
   }
 
-  if (numLinhas == 6 && opcao.internetMovel == "600") {
+  if (numLinhas == 6 && opcao != null && opcao.internetMovel == "600") {
     opcao.vlr_total = (parseFloat(opcao.vlr_total) + 100).toFixed(2).replace('.', ','),
       opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 100).toFixed(2).replace('.', ',')
     return opcao;

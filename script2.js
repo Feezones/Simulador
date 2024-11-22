@@ -302,9 +302,21 @@ function addValorTotal(opcao, numLinhas) {
     return opcao;
   }
 
+  if (numLinhas == 2 && opcao.internetMovel == "100") {
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.', ','),
+      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 50).toFixed(2).replace('.', ',')
+    return opcao;
+  }
+
   if (numLinhas == 3 && opcao.internetMovel == "100") {
     opcao.vlr_total = (parseFloat(opcao.vlr_total) + 100).toFixed(2).replace('.', ','),
       opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 100).toFixed(2).replace('.', ',')
+    return opcao;
+  }
+
+  if (numLinhas == 3 && opcao.internetMovel == "200") {
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.', ',')
+    opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 50).toFixed(2).replace('.', ',')
     return opcao;
   }
 
@@ -314,9 +326,21 @@ function addValorTotal(opcao, numLinhas) {
     return opcao;
   }
 
+  if (numLinhas == 4 && opcao.internetMovel == "300") {
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.', ','),
+      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 50).toFixed(2).replace('.', ',')
+    return opcao;
+  }
+
   if (numLinhas == 5 && opcao.internetMovel == "300") {
     opcao.vlr_total = (parseFloat(opcao.vlr_total) + 100).toFixed(2).replace('.', ','),
       opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 100).toFixed(2).replace('.', ',')
+    return opcao;
+  }
+
+  if (numLinhas == 5 && opcao != null && opcao.internetMovel == "600") {
+    opcao.vlr_total = (parseFloat(opcao.vlr_total) + 50).toFixed(2).replace('.', ','),
+      opcao.vlr_total_portin = (parseFloat(opcao.vlr_total_portin) + 50).toFixed(2).replace('.', ',')
     return opcao;
   }
 
